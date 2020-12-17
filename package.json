@@ -1,7 +1,7 @@
 {
   "name": "sveltemplate-ts-scss-lint",
   "version": "1.0.0",
-  "license": "MIT",
+  "licence": "MIT",
   "author": "Kota Yatagai <kota@yatagai.com>",
   "scripts": {
     "build": "rollup -c",
