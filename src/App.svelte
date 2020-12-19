@@ -14,3 +14,14 @@
 <main>
   <Router routes="{routes}" />
 </main>
+
+<style lang="scss">
+  @import "./assets/definition.scss";
+
+  main {
+    width: 100vw;
+    height: 100vh;
+    font-family: "dosis", "nsjp", Arial, sans-serif;
+    color: $general-black;
+  }
+</style>

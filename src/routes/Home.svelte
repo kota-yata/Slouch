@@ -1,29 +1,53 @@
 <script lang="ts">
+  import HeaderLogo from "../components/HeaderLogo.svelte";
+  import SideCard from "../components/SideCard.svelte";
+
+  interface GenerateResponsiveSize {
+    headerLogo: {
+      width: string;
+      height: string;
+    };
+    leftCard: {
+      width: string;
+      height: string;
+    };
+  }
+
+  const GenerateResponsiveSize = (): GenerateResponsiveSize => {
+    let returnedSizeObject: GenerateResponsiveSize = {
+      headerLogo: {
+        width: "150px",
+        height: "48px",
+      },
+      leftCard: {
+        width: "20vw",
+        height: "60vh",
+      },
+    };
+    return returnedSizeObject;
+  };
+
+  const responsiveSizeObj: GenerateResponsiveSize = GenerateResponsiveSize();
 </script>
 
-<main>
-  <h1>He</h1>
-  <p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+<div class="logo-in-upper-left">
+  <HeaderLogo width="{responsiveSizeObj.headerLogo.width}" height="{responsiveSizeObj.headerLogo.height}" />
+</div>
+<div class="left-card">
+  <SideCard width="{responsiveSizeObj.leftCard.width}" height="{responsiveSizeObj.leftCard.height}">
+    <div slot="content">Hello</div>
+  </SideCard>
+</div>
 
 <style lang="scss">
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
-  }
+  @import "../assets/definition.scss";
 
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4em;
-    font-weight: 100;
+  .logo-in-upper-left {
+    padding: 20px 0px 0px 20px;
   }
-
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
+  .left-card {
+    position: fixed;
+    top: 15vh;
+    left: 2vw;
   }
 </style>

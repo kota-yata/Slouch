@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
+import svelteSVG from "rollup-plugin-svelte-svg";
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -48,17 +49,12 @@ export default {
       },
       preprocess: sveltePreprocess(),
     }),
-
-    // If you have external dependencies installed from
-    // npm, you'll most likely need these plugins. In
-    // some cases you'll need additional configuration -
-    // consult the documentation for details:
-    // https://github.com/rollup/plugins/tree/master/packages/commonjs
     resolve({
       browser: true,
       dedupe: ['svelte']
     }),
     commonjs(),
+    svelteSVG(),
     typescript({
       sourceMap: !production,
       inlineSources: !production
