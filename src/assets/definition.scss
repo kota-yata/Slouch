@@ -3,14 +3,22 @@ $slouch-green: #66d17f;
 $slouch-navy: #46585c;
 $general-black: #333333;
 $general-white: #f5f5f5;
+$shadow-white: #ececec;
 $complete-white: #fafafa;
+
+// サイズの変数
+$left-card-height: 60vh;
+$center-note-height: 80vh;
+$center-note-padding: 5vh;
+$A4RATIO: 1 / 1.414;
+
+$slouch-border: 4px $general-white solid;
 
 // 日本語太字フォント
 @font-face {
   font-family: "nsjp";
-  src: local("Noto Sans JP Regular"),
-    url("./fonts/NSJP-regular/NotoSansJP-Regular.woff") format("woff"),
-    url("./fonts/NSJP-regular/NotoSansJP-Regular.otf") format("opentype");
+  src: local("Noto Sans JP Bold"), url("../fonts/NSJP-bold/NotoSansJP-Bold.woff") format("woff"),
+    url("../fonts/NSJP-bold/NotoSansJP-Bold.otf") format("opentype");
   font-weight: 700;
   font-display: swap;
 }
@@ -18,9 +26,8 @@ $complete-white: #fafafa;
 // 日本語通常フォント
 @font-face {
   font-family: "nsjp";
-  src: local("Noto Sans JP Bold"),
-    url("./fonts/NSJP-bold/NotoSansJP-Bold.woff") format("woff"),
-    url("./fonts/NSJP-bold/NotoSansJP-Bold.otf") format("opentype");
+  src: local("Noto Sans JP Regular"), url("../fonts/NSJP-regular/NotoSansJP-Regular.woff") format("woff"),
+    url("../fonts/NSJP-regular/NotoSansJP-Regular.otf") format("opentype");
   font-weight: 400;
   font-display: swap;
 }
@@ -28,9 +35,8 @@ $complete-white: #fafafa;
 // 英語太字フォント
 @font-face {
   font-family: "dosis";
-  src: local("Dosis Bold"),
-    url("./fonts/Dosis-bold/Dosis-Bold.woff") format("woff"),
-    url("./fonts/Dosis-bold/Dosis-Bold.ttf") format("truetype");
+  src: local("Dosis Bold"), url("../fonts/Dosis-bold/Dosis-Bold.woff") format("woff"),
+    url("../fonts/Dosis-bold/Dosis-Bold.ttf") format("truetype");
   font-weight: 700;
   font-display: swap;
 }
@@ -38,9 +44,8 @@ $complete-white: #fafafa;
 // 英語通常フォント
 @font-face {
   font-family: "dosis";
-  src: local("Dosis Regular"),
-    url("./fonts/Dosis-regular/Dosis-Regular.woff") format("woff"),
-    url("./fonts/Dosis-regular/Dosis-Regular.ttf") format("truetype");
+  src: local("Dosis Regular"), url("../fonts/Dosis-regular/Dosis-Regular.woff") format("woff"),
+    url("../fonts/Dosis-regular/Dosis-Regular.ttf") format("truetype");
   font-weight: 400;
   font-display: swap;
 }
@@ -49,4 +54,14 @@ $complete-white: #fafafa;
 %center {
   margin: 0 auto;
   text-align: center;
+}
+
+// 上下左右センタリングのテンプレート
+%complete-center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
 }

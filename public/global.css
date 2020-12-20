@@ -7,5 +7,10 @@ html, body {
 }
 
 input, button, select, textarea {
-	appearance: none;
+  appearance: none;
+  border: none;
+}
+
+input, button, select, textarea:focus {
+  outline: none;
 }

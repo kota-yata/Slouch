@@ -12,7 +12,7 @@
 
   .side-card {
     background: $complete-white;
-    box-shadow: 2px 2px 5px #ececec, -2px -2px 5px #f5f5f5;
+    box-shadow: 2px 2px 5px $shadow-white, -2px -2px 5px $general-white;
     border-radius: 17px;
   }
 </style>
