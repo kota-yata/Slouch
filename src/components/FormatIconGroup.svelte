@@ -1,23 +1,17 @@
-<script>
-  import Bold from "../assets/svgs/format-bold.svg";
-  import Italic from "../assets/svgs/format-italic.svg";
-  import Underline from "../assets/svgs/format-underline.svg";
-
-  export let width = "100%";
-  export let height = "100%";
-</script>
-
 <div class="format-icon-group">
-  <button><Bold width="{width}" height="{height}" /></button>
-  <button><Italic width="{width}" height="{height}" /></button>
-  <button><Underline width="{width}" height="{height}" /></button>
+  <button><span class="material-icons">format_bold</span></button>
+  <button><span class="material-icons">format_italic</span></button>
+  <button><span class="material-icons">format_underlined</span></button>
 </div>
 
 <style lang="scss">
   @import "../assets/definition.scss";
 
   .format-icon-group {
-    padding: 20% 0;
+    @extend %center;
+    padding: 10% 0;
+    width: 70%;
+    border-bottom: $slouch-border;
     button {
       @extend %center;
       cursor: pointer;
@@ -25,6 +19,10 @@
       width: 20%;
       height: 20%;
       transition: 0.1s;
+      .material-icons {
+        color: $general-black;
+        font-size: 30px;
+      }
       &:hover {
         background: $general-white;
         transition: 0.1s;

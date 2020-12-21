@@ -4,4 +4,13 @@
   export let height;
 </script>
 
-<Logo width="{width}" height="{height}" />
+<div class="header-logo-container">
+  <Logo width="{width}" height="{height}" />
+</div>
+
+<style lang="scss">
+  .header-logo-container {
+    position: fixed;
+    padding: 20px 0px 0px 20px;
+  }
+</style>

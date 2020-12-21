@@ -9,6 +9,8 @@ html, body {
 input, button, select, textarea {
   appearance: none;
   border: none;
+  background: none;
+  color: inherit;
 }
 
 input, button, select, textarea:focus {
