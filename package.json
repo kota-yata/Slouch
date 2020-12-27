@@ -8,13 +8,14 @@
     "dev": "rollup -c -w",
     "start": "sirv public",
     "validate": "svelte-check",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "tsc": "tsc --outDir ./src/jsdist"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
     "@rollup/plugin-typescript": "^6.0.0",
-    "@tsconfig/svelte": "^1.0.0",
+    "@tsconfig/svelte": "^1.0.10",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.0",
     "node-sass": "^4.14.1",
@@ -29,10 +30,15 @@
     "svelte": "^3.0.0",
     "svelte-check": "^1.0.0",
     "svelte-preprocess": "^4.0.0",
+    "svelte-spa-router": "^3.1.0",
     "tslib": "^2.0.0",
     "typescript": "^3.9.3"
   },
   "dependencies": {
+    "dompurify": "^2.2.6",
+    "firebase": "^8.2.1",
+    "highlight.js": "^10.5.0",
+    "marked": "^1.2.7",
     "sirv-cli": "^1.0.0"
   },
   "husky": {

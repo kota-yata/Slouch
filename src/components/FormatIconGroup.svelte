@@ -1,7 +1,9 @@
+<script lang="ts">
+  const formatIconArray = ["bold", "italic", "underline"];
+</script>
+
 <div class="format-icon-group">
-  <button><span class="material-icons">format_bold</span></button>
-  <button><span class="material-icons">format_italic</span></button>
-  <button><span class="material-icons">format_underlined</span></button>
+  {#each formatIconArray as string, i}<button class="fas fa-{string}"></button>{/each}
 </div>
 
 <style lang="scss">
@@ -14,15 +16,14 @@
     border-bottom: $slouch-border;
     button {
       @extend %center;
-      cursor: pointer;
       background: transparent;
-      width: 20%;
-      height: 20%;
+      padding: 20px;
+      margin-left: 5px;
+      margin-right: 5px;
       transition: 0.1s;
-      .material-icons {
-        color: $general-black;
-        font-size: 30px;
-      }
+      font-size: 20px;
+      color: $slouch-navy;
+      border-radius: 10px;
       &:hover {
         background: $general-white;
         transition: 0.1s;

@@ -16,3 +16,7 @@ input, button, select, textarea {
 input, button, select, textarea:focus {
   outline: none;
 }
+
+button {
+  cursor: pointer;
+}

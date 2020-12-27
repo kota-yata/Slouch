@@ -28,7 +28,6 @@
     @extend %center;
     width: 100%;
     .file-button {
-      cursor: pointer;
       text-align: left;
       width: 80%;
       padding: 6% 0 6% 10%;

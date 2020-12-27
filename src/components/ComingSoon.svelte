@@ -6,7 +6,7 @@
 </script>
 
 <div class="coming-soon">
-  <div class="coming-soon-sentence">New feature will come soon...</div>
+  <div class="coming-soon-sentence">Coming soon...</div>
   <img class="coming-soon-img lazyload" alt="painting-rocket" data-src="./img/painting-rocket.png" />
 </div>
 
@@ -23,7 +23,7 @@
     }
     &-img {
       margin-top: 10px;
-      width: 80%;
+      width: 60%;
     }
   }
 </style>

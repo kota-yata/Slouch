@@ -6,6 +6,7 @@
   import ProfileStuff from "../components/ProfileStuff.svelte";
   import SideCard from "../components/SideCard.svelte";
   import FileButtonGroup from "../components/FileButtonGroup.svelte";
+  import EditorButtonGroup from "../components/EditorButtonGroup.svelte";
 
   interface GenerateResponsiveSize {
     headerLogo: {
@@ -16,17 +17,11 @@
       width: string;
       height: string;
     };
-    centerNote: {
-      width: string;
-      height: string;
-    };
   }
 
   // innerWidthに対応した各コンポーネントのサイズを返す
   const GenerateResponsiveSize = (): GenerateResponsiveSize => {
     const sideNoteWidth: string = "20vw";
-    const centerNoteHeight: string = "80vh";
-    const A4RATIO: string = "1 / 1.414";
 
     let returnedSizeObject: GenerateResponsiveSize = {
       headerLogo: {
@@ -36,10 +31,6 @@
       sideCard: {
         width: sideNoteWidth,
         height: "60vh",
-      },
-      centerNote: {
-        width: `calc(${centerNoteHeight} * ${A4RATIO})`,
-        height: centerNoteHeight,
       },
     };
     return returnedSizeObject;
@@ -52,13 +43,14 @@
 <div class="left-card side-card">
   <SideCard width="{responsiveSizeObj.sideCard.width}" height="{responsiveSizeObj.sideCard.height}">
     <div slot="content">
+      <EditorButtonGroup />
       <FormatIconGroup />
       <ComingSoon />
     </div>
   </SideCard>
 </div>
 <div class="note-container">
-  <CenterNote width="{responsiveSizeObj.centerNote.width}" height="{responsiveSizeObj.centerNote.height}" />
+  <CenterNote />
 </div>
 <div class="right-card side-card">
   <SideCard width="{responsiveSizeObj.sideCard.width}" height="{responsiveSizeObj.sideCard.height}">
