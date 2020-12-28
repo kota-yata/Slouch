@@ -12,7 +12,7 @@
   .format-icon-group {
     @extend %center;
     padding: 10% 0;
-    width: 70%;
+    width: 80%;
     border-bottom: $slouch-border;
     button {
       @extend %center;

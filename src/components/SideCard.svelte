@@ -1,6 +1,6 @@
 <script lang="ts">
-  export let width: string;
-  export let height: string;
+  export let width: string = "20vw";
+  export let height: string = "60vh";
 </script>
 
 <div class="side-card" style="width:{width}; height:{height};">

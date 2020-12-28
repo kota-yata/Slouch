@@ -7,30 +7,22 @@
   import SideCard from "../components/SideCard.svelte";
   import FileButtonGroup from "../components/FileButtonGroup.svelte";
   import EditorButtonGroup from "../components/EditorButtonGroup.svelte";
+  import Copyright from "../components/Copyright.svelte";
 
   interface GenerateResponsiveSize {
     headerLogo: {
       width: string;
       height: string;
     };
-    sideCard: {
-      width: string;
-      height: string;
-    };
   }
 
   // innerWidthに対応した各コンポーネントのサイズを返す
+  // 現状SvelteでSVGをSCSSからいじる方法はないのでTSでどうにかする
   const GenerateResponsiveSize = (): GenerateResponsiveSize => {
-    const sideNoteWidth: string = "20vw";
-
     let returnedSizeObject: GenerateResponsiveSize = {
       headerLogo: {
         width: "150px",
         height: "48px",
-      },
-      sideCard: {
-        width: sideNoteWidth,
-        height: "60vh",
       },
     };
     return returnedSizeObject;
@@ -41,7 +33,7 @@
 
 <HeaderLogo width="{responsiveSizeObj.headerLogo.width}" height="{responsiveSizeObj.headerLogo.height}" />
 <div class="left-card side-card">
-  <SideCard width="{responsiveSizeObj.sideCard.width}" height="{responsiveSizeObj.sideCard.height}">
+  <SideCard>
     <div slot="content">
       <EditorButtonGroup />
       <FormatIconGroup />
@@ -53,10 +45,11 @@
   <CenterNote />
 </div>
 <div class="right-card side-card">
-  <SideCard width="{responsiveSizeObj.sideCard.width}" height="{responsiveSizeObj.sideCard.height}">
+  <SideCard>
     <div slot="content">
       <ProfileStuff />
       <FileButtonGroup />
+      <Copyright />
     </div>
   </SideCard>
 </div>

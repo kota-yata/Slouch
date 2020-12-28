@@ -4,18 +4,19 @@
   window.addEventListener("DOMContentLoaded", (): void => {
     // 初期画面はエディターなのでタイトルもEditorにしておく
     document.title = "SLOUCH - Editor";
-    // 二つのボタンを取得してnullだったら早めに返しておく
+    // 二つのボタンを取得してnullだったら返しておく
     const editButton: HTMLElement | null = document.getElementById("Editor");
     if (!editButton) throw "editButton is null";
     const previewButton: HTMLElement | null = document.getElementById("Preview");
     if (!previewButton) throw "previewButton is null.";
 
-    const antinomyArray: HTMLElement[] = [editButton, previewButton];
-
+    // エディターボタンがクリックされた時
     editButton.addEventListener("click", () => {
       triggerAntinomyButtons(editButton, previewButton);
       changeAppearance(0);
     });
+
+    // プレビューボタンがクリックされた時
     previewButton.addEventListener("click", () => {
       triggerAntinomyButtons(previewButton, editButton);
       parseElement();
@@ -24,6 +25,8 @@
   });
 
   // 押されたボタンをdisabledにして他方のdisabledを削除する
+  // disabledにしないと、すでに押してある方を押した際の無駄な条件分岐が発生する
+  // disabledにすることでSCSSの指定が楽になると言うメリットもある
   const triggerAntinomyButtons = (clicked: HTMLElement, another: HTMLElement): void => {
     clicked.setAttribute("disabled", "true");
     // 押されたボタンのIDを取得してタイトルにぶち込む
