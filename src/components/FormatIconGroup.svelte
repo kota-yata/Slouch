@@ -30,4 +30,14 @@
       }
     }
   }
+
+  @media screen and (max-width: 1200px) {
+    .format-icon-group {
+      padding: 5% 0;
+      button {
+        padding: 13px;
+        font-size: 15px;
+      }
+    }
+  }
 </style>

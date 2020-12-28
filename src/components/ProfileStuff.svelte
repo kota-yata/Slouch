@@ -2,9 +2,7 @@
 </script>
 
 <div class="profile-stuff">
-  <span
-    class="profile-stuff-email"
-  >super.long.address.he.is.no.longer.with.us.from.tomorrow.come.on.bro@gmail.com</span>
+  <span class="profile-stuff-email">super.long.address.he.is.no.longer.with.us@gmail.com</span>
 </div>
 
 <style lang="scss">
@@ -13,11 +11,9 @@
   .profile-stuff {
     @extend %center;
     width: 80%;
-    overflow-x: visible;
     border-bottom: $slouch-border;
     padding: 5% 0;
     &-email {
-      margin-left: 10px;
       font-weight: bold;
       font-size: 20px;
       color: $slouch-green;
@@ -29,6 +25,8 @@
   @media screen and (max-width: 1200px) {
     .profile-stuff {
       width: 90%;
+      max-height: 8vh;
+      overflow-y: scroll;
       &-email {
         font-size: 13px;
       }

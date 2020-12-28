@@ -81,7 +81,7 @@
   @import "../assets/definition.scss";
 
   .center-content {
-    width: calc(#{$center-note-height} * #{$A4RATIO});
+    width: $center-note-width;
     height: $center-note-height;
     position: absolute;
     top: calc(

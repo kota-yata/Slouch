@@ -15,15 +15,23 @@
 
   .coming-soon {
     @extend %center;
-    margin-top: 10%;
     &-sentence {
+      padding: 5% 0;
       font-weight: bold;
       font-size: 20px;
       color: $slouch-green;
     }
     &-img {
-      margin-top: 10px;
       width: 60%;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .coming-soon {
+      &-sentence {
+        padding: 2vh 0;
+        font-size: 15px;
+      }
     }
   }
 </style>

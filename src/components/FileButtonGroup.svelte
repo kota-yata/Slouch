@@ -28,6 +28,7 @@
   .file-button-container {
     @extend %center;
     width: 100%;
+    height: 100%;
     .file-button {
       text-align: left;
       width: 80%;
@@ -59,12 +60,27 @@
   @media screen and (max-width: 1200px) {
     .file-button-container {
       .file-button {
-        padding-left: 5%;
+        padding: 0 0 0 5%;
+        height: 8vh;
         &-icon {
           font-size: 20px;
         }
         &-words {
           font-size: 15px;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    .file-button-container {
+      .file-button {
+        height: 7vh;
+        padding: 0 0 0 3%;
+        &-icon {
+          font-size: 15px;
+        }
+        &-words {
+          font-size: 10px;
         }
       }
     }

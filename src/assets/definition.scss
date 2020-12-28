@@ -8,10 +8,11 @@ $complete-white: #fafafa;
 
 // サイズの変数
 $left-card-height: 60vh;
-$center-note-height: 80vh;
-$center-note-padding: 5vh;
 $A4RATIO: 1 / 1.414;
 $slouch-border: 4px $general-white solid;
+$center-note-height: 80vh;
+$center-note-width: calc(#{$center-note-height} * #{$A4RATIO});
+$center-note-padding: 5vh;
 
 // 日本語太字フォント
 @font-face {
