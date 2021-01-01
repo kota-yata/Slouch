@@ -1,7 +1,7 @@
 <script lang="ts">
   import ComingSoon from "../components/ComingSoon.svelte";
   import FormatIconGroup from "../components/FormatIconGroup.svelte";
-  import HeaderLogo from "../components/HeaderLogo.svelte";
+  import HeaderLogo from "../components/svgComponents/HeaderLogo.svelte";
   import CenterNote from "../components/CenterNote.svelte";
   import ProfileStuff from "../components/ProfileStuff.svelte";
   import SideCard from "../components/SideCard.svelte";

@@ -1,0 +1,39 @@
+@import "../assets/definition.scss";
+
+.screen-division-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  .screen-division {
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 45vw;
+    height: 70vh;
+  }
+  .left-container {
+    margin-left: 5vw;
+    .text-editor-for-memorizing {
+      @extend %center;
+      font-family: "corp";
+      font-size: 45px;
+      color: $slouch-green;
+    }
+    .auth-button-container {
+      padding: 5vh 0;
+      div {
+        margin-top: 5vh;
+      }
+      .jump-page {
+        @extend %center;
+        margin-top: 7vh;
+      }
+    }    
+  }
+  .right-container {
+    margin-right: 5vw;
+  }
+}

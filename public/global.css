@@ -6,6 +6,11 @@ html, body {
   background-color: #f5f5f5;
 }
 
+a {
+  color: #66d17f;
+  font-weight: bold;
+}
+
 input, button, select, textarea {
   appearance: none;
   border: none;

@@ -1,7 +1,10 @@
 <script lang="ts">
+  import { link } from "svelte-spa-router";
+
   interface fileButton {
     icon: string;
     words: string;
+    href?: string;
   }
 
   const fileButtonArray: fileButton[] = [
@@ -9,16 +12,25 @@
     { icon: "save", words: "上書き保存" },
     { icon: "download", words: "ダウンロード" },
     { icon: "question", words: "ヘルプ" },
-    { icon: "sign-out-alt", words: "サインアウト" },
+    { icon: "sign-out-alt", words: "サインアウト", href: "/signin" },
   ];
 </script>
 
 <div class="file-button-container">
-  {#each fileButtonArray as { icon, words }, i}
-    <button class="file-button">
-      <span class="fas fa-{icon} file-button-icon"></span>
-      <span class="file-button-words">{words}</span>
-    </button>
+  {#each fileButtonArray as { icon, words, href }, i}
+    {#if href}
+      <a href="{href}" use:link>
+        <button class="file-button" id="{icon}">
+          <span class="fas fa-{icon} file-button-icon"></span>
+          <span class="file-button-words">{words}</span>
+        </button>
+      </a>
+    {:else}
+      <button class="file-button" id="{icon}">
+        <span class="fas fa-{icon} file-button-icon"></span>
+        <span class="file-button-words">{words}</span>
+      </button>
+    {/if}
   {/each}
 </div>
 

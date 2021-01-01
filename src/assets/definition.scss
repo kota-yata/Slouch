@@ -14,6 +14,14 @@ $center-note-height: 80vh;
 $center-note-width: calc(#{$center-note-height} * #{$A4RATIO});
 $center-note-padding: 5vh;
 
+// 日本語ロゴ用フォント
+@font-face {
+  font-family: "corp";
+  src: local("Corporate Logo Rounded"), url("../fonts/Corp/Corp.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
 // 日本語太字フォント
 @font-face {
   font-family: "nsjp";
@@ -47,6 +55,14 @@ $center-note-padding: 5vh;
   src: local("Dosis Regular"), url("../fonts/Dosis-regular/Dosis-Regular.woff") format("woff"),
     url("../fonts/Dosis-regular/Dosis-Regular.ttf") format("truetype");
   font-weight: 400;
+  font-display: swap;
+}
+
+// ログインボタン用Robotoフォント
+@font-face {
+  font-family: "roboto";
+  src: local("Roboto Bold"), url("../fonts/Roboto/Roboto.ttf") format("truetype");
+  font-weight: 700;
   font-display: swap;
 }
 
