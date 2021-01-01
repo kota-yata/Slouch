@@ -13,6 +13,8 @@
     width: 80%;
     border-bottom: $slouch-border;
     padding: 5% 0;
+    max-height: 6.5vh;
+    overflow-y: scroll;
     &-email {
       font-weight: bold;
       font-size: 20px;
@@ -25,8 +27,6 @@
   @media screen and (max-width: 1200px) {
     .profile-stuff {
       width: 90%;
-      max-height: 8vh;
-      overflow-y: scroll;
       &-email {
         font-size: 13px;
       }

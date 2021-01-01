@@ -5,8 +5,8 @@
   import SignInStories from "../components/svgComponents/SignInStories.svelte";
 </script>
 
-<div class="header-logo-container">
-  <HeaderLogo width="150px" height="48px" />
+<div class="logo-container">
+  <HeaderLogo />
 </div>
 <div class="screen-division-container">
   <div class="left-container screen-division">
@@ -22,7 +22,9 @@
     </div>
   </div>
   <div class="right-container screen-division">
-    <SignInStories />
+    <div>
+      <SignInStories />
+    </div>
   </div>
 </div>
 

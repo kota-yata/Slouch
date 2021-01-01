@@ -1,5 +1,9 @@
 @import "../assets/definition.scss";
 
+.logo-container {
+  position: fixed;
+  padding: 20px 0px 0px 20px;
+}
 .screen-division-container {
   width: 100vw;
   height: 100vh;
@@ -19,7 +23,7 @@
     .text-editor-for-memorizing {
       @extend %center;
       font-family: "corp";
-      font-size: 45px;
+      font-size: 60px;
       color: $slouch-green;
     }
     .auth-button-container {
@@ -31,7 +35,7 @@
         @extend %center;
         margin-top: 7vh;
       }
-    }    
+    }
   }
   .right-container {
     margin-right: 5vw;

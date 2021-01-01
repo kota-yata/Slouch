@@ -40,4 +40,11 @@
       }
     }
   }
+
+  @media (max-aspect-ratio: 1/1) {
+    .format-icon-group {
+      padding: 4% 0;
+      border-bottom: none;
+    }
+  }
 </style>

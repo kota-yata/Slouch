@@ -1,7 +1,7 @@
 <script>
   import Logo from "../../assets/svgs/logoonly.svg"; // このSVG読込のエラーが消えなかったため、解決策が見つかるまでこのコンポーネントはTSではなくJSで書く
-  export let width;
-  export let height;
+  export let width = window.innerWidth > window.innerHeight ? "150px" : "100px";
+  export let height = window.innerWidth > window.innerHeight ? "48px" : "32px";
 </script>
 
 <div class="header-logo-container">
@@ -9,8 +9,9 @@
 </div>
 
 <style lang="scss">
+  @import "../../assets/definition.scss";
+
   .header-logo-container {
-    position: fixed;
-    padding: 20px 0px 0px 20px;
+    @extend %center;
   }
 </style>

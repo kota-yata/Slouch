@@ -46,19 +46,13 @@
       width: 160px;
       font-family: "roboto";
       font-size: 15px;
-      color: $general-black;
+      // Googleのガイドラインに沿ったスタイルに統一する
+      color: #000000;
+      opacity: 0.54;
     }
     &:hover {
       box-shadow: 1px 1px 3px $shadow-white, -1px -1px 3px $general-white;
       transition: 0.2s;
-    }
-  }
-
-  // Googleのガイドラインに沿ったスタイル
-  .google {
-    .auth-button-title {
-      color: #000000;
-      opacity: 0.54;
     }
   }
 </style>

@@ -88,7 +88,7 @@
       50% - #{$center-note-height} / 2 - #{$center-note-padding}
     ); // ページの高さ/2 - カードの高さ/2 - paddingで上下センタリングされる
     left: calc(
-      50% - #{$center-note-height} * #{$A4RATIO} / 2 - #{$center-note-padding}
+      50% - #{$center-note-width} / 2 - #{$center-note-padding}
     ); // A4サイズ(1:1.414)に横幅を合わせ、ページの横幅/2 - テキストエリアの横幅/2 - paddingで左右センタリングする
     background: $complete-white;
     font-family: "nsjp", sans-serif;
@@ -101,5 +101,19 @@
   }
   .preview-note {
     z-index: 2;
+  }
+
+  @media (max-aspect-ratio: 1/1) {
+    $mobile-padding: 2vh;
+    $mobile-width: calc(80vw - #{$mobile-padding}* 2);
+    $mobile-height: calc(80vw / #{$A4RATIO} - #{$mobile-padding}* 2);
+    .center-content {
+      top: 0;
+      left: calc(50% - 80vw / 2);
+      width: $mobile-width;
+      max-height: calc(100vh - 76px - 25vh - #{$mobile-padding}* 2);
+      min-height: $mobile-height;
+      padding: $mobile-padding;
+    }
   }
 </style>

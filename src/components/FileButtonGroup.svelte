@@ -11,6 +11,7 @@
     { icon: "plus", words: "新規作成" },
     { icon: "save", words: "上書き保存" },
     { icon: "download", words: "ダウンロード" },
+    { icon: "history", words: "履歴" },
     { icon: "question", words: "ヘルプ" },
     { icon: "sign-out-alt", words: "サインアウト", href: "/signin" },
   ];
@@ -73,9 +74,9 @@
     .file-button-container {
       .file-button {
         padding: 0 0 0 5%;
-        height: 8vh;
+        height: 6.5vh;
         &-icon {
-          font-size: 20px;
+          font-size: 19px;
         }
         &-words {
           font-size: 15px;
@@ -93,6 +94,20 @@
         }
         &-words {
           font-size: 10px;
+        }
+      }
+    }
+  }
+  @media (max-aspect-ratio: 1/1) {
+    .file-button-container {
+      .file-button {
+        height: 7vh;
+        padding: 0 0 0 1%;
+        &-icon {
+          font-size: 18px;
+        }
+        &-words {
+          font-size: 13px;
         }
       }
     }

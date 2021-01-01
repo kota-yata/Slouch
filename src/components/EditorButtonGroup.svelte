@@ -65,4 +65,12 @@
       }
     }
   }
+  @media (max-aspect-ratio: 1/1) {
+    .editor-button-group {
+      padding: 10px 0;
+      .editor-button {
+        margin: 0 10px;
+      }
+    }
+  }
 </style>

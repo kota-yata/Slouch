@@ -9,43 +9,16 @@
   import EditorButtonGroup from "../components/EditorButtonGroup.svelte";
   import Copyright from "../components/Copyright.svelte";
 
-  interface GenerateResponsiveSize {
-    headerLogo: {
-      width: string;
-      height: string;
-    };
-  }
-
-  // innerWidthに対応した各コンポーネントのサイズを返す
-  // 現状SvelteでSVGをSCSSからいじる方法はないのでTSでどうにかする
-  const GenerateResponsiveSize = (): GenerateResponsiveSize => {
-    let returnedSizeObject: GenerateResponsiveSize = {
-      headerLogo: {
-        width: "150px",
-        height: "48px",
-      },
-    };
-    return returnedSizeObject;
-  };
-
-  const responsiveSizeObj: GenerateResponsiveSize = GenerateResponsiveSize();
+  const isLandScape: boolean = window.innerWidth > window.innerHeight;
+  const cardWidth: string = isLandScape ? "20vw" : "80vw";
+  const cardHeight: string = isLandScape ? "60vh" : "23vh";
 </script>
 
-<HeaderLogo width="{responsiveSizeObj.headerLogo.width}" height="{responsiveSizeObj.headerLogo.height}" />
-<div class="left-card side-card">
-  <SideCard>
-    <div slot="content">
-      <EditorButtonGroup />
-      <FormatIconGroup />
-      <ComingSoon />
-    </div>
-  </SideCard>
-</div>
-<div class="note-container">
-  <CenterNote />
+<div class="header-container">
+  <HeaderLogo />
 </div>
 <div class="right-card side-card">
-  <SideCard>
+  <SideCard width="{cardWidth}">
     <div slot="content">
       <ProfileStuff />
       <FileButtonGroup />
@@ -53,10 +26,28 @@
     </div>
   </SideCard>
 </div>
+<div class="note-container">
+  <CenterNote />
+</div>
+<div class="left-card side-card">
+  <SideCard width="{cardWidth}" height="{cardHeight}">
+    <div class="content" slot="content">
+      <EditorButtonGroup />
+      <FormatIconGroup />
+      {#if isLandScape}
+        <ComingSoon />
+      {/if}
+    </div>
+  </SideCard>
+</div>
 
 <style lang="scss">
   @import "../assets/definition.scss";
 
+  .header-container {
+    position: fixed;
+    padding: 20px 0px 0px 20px;
+  }
   .side-card {
     position: fixed;
     top: calc(
@@ -67,6 +58,41 @@
     left: 2vw;
   }
   .right-card {
+    z-index: 5;
     right: 2vw;
+  }
+
+  @media (max-aspect-ratio: 1/1) {
+    .header-container {
+      width: 100vw;
+      padding: 20px 0;
+      position: relative;
+    }
+    .left-card {
+      position: relative;
+      height: 23vh;
+      padding: 1vh 0;
+      display: flex;
+      justify-content: center;
+      left: auto;
+      top: auto;
+      .content {
+        display: flex;
+        flex-flow: column;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        height: 23vh;
+      }
+    }
+    .right-card {
+      top: 100px;
+      right: -80vw;
+    }
+    .note-container {
+      position: relative;
+      width: 100vw;
+      height: calc(100vh - 76px - 25vh);
+    }
   }
 </style>

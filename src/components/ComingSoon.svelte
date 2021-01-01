@@ -1,13 +1,12 @@
 <script lang="ts">
-  // DOMが全部読み込まれた後にLazyloadでPainting-Rocketを読みこむ
-  window.addEventListener("DOMContentLoaded", () => {
-    lazyload();
-  });
+  import Rocket from "./svgComponents/Rocket.svelte";
 </script>
 
 <div class="coming-soon">
   <div class="coming-soon-sentence">Coming soon...</div>
-  <img class="coming-soon-img lazyload" alt="painting-rocket" data-src="./img/painting-rocket.png" />
+  <div>
+    <Rocket />
+  </div>
 </div>
 
 <style lang="scss">
@@ -20,9 +19,6 @@
       font-weight: bold;
       font-size: 20px;
       color: $slouch-green;
-    }
-    &-img {
-      width: 60%;
     }
   }
 
