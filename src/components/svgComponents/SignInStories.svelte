@@ -1,6 +1,6 @@
 <script>
   import Stories from "../../assets/svgs/signin.svg";
-  export let width = "40vw";
+  export let width = window.innerWidth > 700 ? "40vw" : "60vw";
   export let height = width;
 </script>
 

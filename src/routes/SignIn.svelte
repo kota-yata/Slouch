@@ -10,7 +10,7 @@
 </div>
 <div class="screen-division-container">
   <div class="left-container screen-division">
-    <div class="text-editor-for-memorizing">暗記のためのテキストエディタ</div>
+    <div class="text-editor-for-memorizing">おかえりなさい</div>
     <div class="auth-button-container">
       <div>
         <AuthButton id="in_google" iconToImport="google" title="Sign in with Google" />

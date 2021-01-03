@@ -79,6 +79,9 @@
 
 <style lang="scss">
   @import "../assets/definition.scss";
+  $mobile-padding: 2vh;
+  $mobile-width: calc(80vw - #{$mobile-padding}* 2);
+  $mobile-height: calc(80vw / #{$A4RATIO} - #{$mobile-padding}* 2);
 
   .center-content {
     width: $center-note-width;
@@ -104,16 +107,20 @@
   }
 
   @media (max-aspect-ratio: 1/1) {
-    $mobile-padding: 2vh;
-    $mobile-width: calc(80vw - #{$mobile-padding}* 2);
-    $mobile-height: calc(80vw / #{$A4RATIO} - #{$mobile-padding}* 2);
     .center-content {
       top: 0;
       left: calc(50% - 80vw / 2);
       width: $mobile-width;
+      height: $mobile-height;
       max-height: calc(100vh - 76px - 25vh - #{$mobile-padding}* 2);
-      min-height: $mobile-height;
       padding: $mobile-padding;
+    }
+  }
+
+  @media screen and (max-width: 700px) and (max-aspect-ratio: 4/7) {
+    .center-content {
+      height: calc(100vh - 76px - 25vh - #{$mobile-padding}* 2 - 4vh);
+      min-height: $mobile-height;
     }
   }
 </style>

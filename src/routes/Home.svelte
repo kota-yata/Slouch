@@ -65,7 +65,7 @@
   @media (max-aspect-ratio: 1/1) {
     .header-container {
       width: 100vw;
-      padding: 20px 0;
+      padding: 10px 0;
       position: relative;
     }
     .left-card {
@@ -93,6 +93,12 @@
       position: relative;
       width: 100vw;
       height: calc(100vh - 76px - 25vh);
+    }
+  }
+
+  @media screen and (max-width: 700px) and (max-aspect-ratio: 4/7) {
+    .header-container {
+      padding: 15px 0px;
     }
   }
 </style>
