@@ -22,6 +22,18 @@
       parseElement();
       changeAppearance(1);
     });
+
+    // エディターとプレビューを切り替えるキーボードショートカット
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "p" && event.ctrlKey) {
+        if (previewButton.hasAttribute("disabled")) return;
+        previewButton.click();
+      }
+      if (event.key === "e" && event.ctrlKey) {
+        if (editButton.hasAttribute("disabled")) return;
+        editButton.click();
+      }
+    });
   });
 
   // 押されたボタンをdisabledにして他方のdisabledを削除する
@@ -39,8 +51,8 @@
 </script>
 
 <div class="editor-button-group">
-  <button class="editor-button fas fa-eye" id="Preview"></button>
-  <button class="editor-button fas fa-pencil-alt" id="Editor" disabled></button>
+  <button class="editor-button" id="Preview"><i class="fas fa-eye"></i></button>
+  <button class="editor-button" id="Editor" disabled><i class="fas fa-pencil-alt"></i></button>
 </div>
 
 <style lang="scss">
@@ -58,6 +70,13 @@
       color: $slouch-green;
       font-size: 18px;
       transition: 0.2s;
+      position: relative;
+      i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
       &:disabled {
         background-color: $slouch-green;
         color: $general-white;

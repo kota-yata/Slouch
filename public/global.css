@@ -25,3 +25,7 @@ input, button, select, textarea:focus {
 button {
   cursor: pointer;
 }
+
+.preview-note h1 {
+  margin: 0;
+}
