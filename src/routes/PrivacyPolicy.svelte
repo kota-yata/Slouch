@@ -145,4 +145,33 @@
     color: $slouch-green;
     font-weight: bold;
   }
+
+  @media screen and (max-width: 800px) {
+    .privacy-policy {
+      width: 90vw;
+      max-width: 90vw;
+      &-title {
+        h1 {
+          font-size: 25px;
+        }
+      }
+      &-contents {
+        width: 85vw;
+        max-width: 85vw;
+        .section {
+          padding: 5px 15px;
+          h2 {
+            font-size: 18px;
+            i {
+              font-size: 22px;
+              padding-right: 5px;
+            }
+          }
+        }
+        .words {
+          font-size: 15px;
+        }
+      }
+    }
+  }
 </style>
