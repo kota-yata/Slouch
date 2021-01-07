@@ -1,6 +1,13 @@
 # SLOUCH
-[Figma](https://www.figma.com/file/Q9LctyjYZ50QJDUgomrNRd/Slouch?node-id=0%3A1)
+SLOUCHはZennライクなMarkdownエディタです。
 
-[Dev Stage URL](https://slouch-dev.netlify.app/)
+slouch.dev
 
-[Notion](https://www.notion.so/Slouch-b89b782005ca4e1b8d3c697af24faf39)
+## 開発
+
+```
+git clone git@github.com:kota-yata/Slouch.git
+yarn install
+```
+
+コミット時にはprettierのフォーマットが走ります
