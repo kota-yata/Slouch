@@ -1,5 +1,6 @@
 <script lang="ts">
   import HeaderLogo from "../components/svgComponents/HeaderLogo.svelte";
+  import Button from "../components/Button.svelte";
   import { push } from "svelte-spa-router";
 
   document.title = "プライバシーポリシー - SLOUCH";
@@ -10,7 +11,7 @@
 </script>
 
 <div class="logo-container">
-  <HeaderLogo />
+  <a href="https://slouch.dev"><HeaderLogo /></a>
 </div>
 <div class="privacy-policy">
   <div class="privacy-policy-title">
@@ -67,7 +68,9 @@
     </div>
   </div>
 </div>
-<div class="back-button-container"><button class="back-button" on:click="{backToHome}">サービスに戻る</button></div>
+<div class="back-button-container">
+  <Button title="サービスに戻る" onclick="{backToHome}" />
+</div>
 <div class="license">© 2021 SLOUCH</div>
 
 <style lang="scss">
@@ -129,15 +132,6 @@
   .back-button-container {
     @extend %center;
     padding-bottom: 4em;
-    .back-button {
-      border-radius: 5px;
-      background: $slouch-green;
-      font-family: "nsjp";
-      font-weight: bold;
-      color: $complete-white;
-      padding: 10px;
-      box-shadow: 2px 2px 5px $shadow-white, -2px -2px 5px $general-white;
-    }
   }
   .license {
     @extend %center;
