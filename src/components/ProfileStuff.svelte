@@ -1,9 +1,14 @@
 <script lang="ts">
+  import firebase from "firebase/app";
+  import "firebase/auth";
+  let emailAddress = "No email address";
+  firebase.auth().onAuthStateChanged((user: any) => {
+    if (!user) return;
+    emailAddress = user.email;
+  });
 </script>
 
-<div class="profile-stuff">
-  <span class="profile-stuff-email">super.long.address.he.is.no.longer.with.us@gmail.com</span>
-</div>
+<div class="profile-stuff"><span id="email_address" class="profile-stuff-email">{emailAddress}</span></div>
 
 <style lang="scss">
   @import "../assets/definition.scss";

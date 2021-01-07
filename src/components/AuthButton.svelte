@@ -7,9 +7,10 @@
   export let id: string;
   export let iconToImport: iconToImport;
   export let title: string;
+  export let onclick: any;
 </script>
 
-<button class="auth-button {iconToImport}" id="{id}">
+<button class="auth-button {iconToImport}" id="{id}" on:click="{onclick}">
   <span class="auth-button-icon">
     {#if iconToImport === 'google'}
       <Google />

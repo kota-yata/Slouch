@@ -1,37 +1,39 @@
 <script lang="ts">
-  import { link } from "svelte-spa-router";
+  import { push } from "svelte-spa-router";
+  import firebase from "firebase/app";
+  import "firebase/auth";
 
   interface fileButton {
     icon: string;
     words: string;
-    href?: string;
+    onclick?: any;
   }
 
+  const signOut = (): void => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        push("/signin");
+      });
+  };
+
   const fileButtonArray: fileButton[] = [
+    { icon: "user-circle", words: "マイノート" },
     { icon: "plus", words: "新規作成" },
     { icon: "save", words: "上書き保存" },
     { icon: "download", words: "ダウンロード" },
-    { icon: "history", words: "履歴" },
     { icon: "question", words: "ヘルプ" },
-    { icon: "sign-out-alt", words: "サインアウト", href: "/signin" },
+    { icon: "sign-out-alt", words: "サインアウト", onclick: signOut },
   ];
 </script>
 
 <div class="file-button-container">
-  {#each fileButtonArray as { icon, words, href }, i}
-    {#if href}
-      <a href="{href}" use:link>
-        <button class="file-button" id="{icon}">
-          <span class="fas fa-{icon} file-button-icon"></span>
-          <span class="file-button-words">{words}</span>
-        </button>
-      </a>
-    {:else}
-      <button class="file-button" id="{icon}">
-        <span class="fas fa-{icon} file-button-icon"></span>
-        <span class="file-button-words">{words}</span>
-      </button>
-    {/if}
+  {#each fileButtonArray as { icon, words, onclick }, i}
+    <button class="file-button" id="{icon}" on:click="{onclick}">
+      <span class="fas fa-{icon} file-button-icon"></span>
+      <span class="file-button-words">{words}</span>
+    </button>
   {/each}
 </div>
 

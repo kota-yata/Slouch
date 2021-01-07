@@ -1,12 +1,14 @@
 <script>
   import Router from "svelte-spa-router";
   import Home from "./routes/Home.svelte";
-  import SignUp from "./routes/SignUp.svelte";
   import SignIn from "./routes/SignIn.svelte";
+  import { setUpFirebase } from "./components/Firebase.svelte";
+  import "firebase/auth";
+
+  setUpFirebase();
 
   const routes = {
     "/": Home,
-    "/signup/": SignUp,
     "/signin/": SignIn,
   };
 </script>

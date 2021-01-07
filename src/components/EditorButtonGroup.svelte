@@ -25,13 +25,9 @@
 
     // エディターとプレビューを切り替えるキーボードショートカット
     window.addEventListener("keydown", (event) => {
-      if (event.key === "p" && event.ctrlKey) {
-        if (previewButton.hasAttribute("disabled")) return;
-        previewButton.click();
-      }
       if (event.key === "e" && event.ctrlKey) {
-        if (editButton.hasAttribute("disabled")) return;
-        editButton.click();
+        if (editButton.hasAttribute("disabled")) return previewButton.click();
+        return editButton.click();
       }
     });
   });

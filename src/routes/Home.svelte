@@ -8,10 +8,17 @@
   import FileButtonGroup from "../components/FileButtonGroup.svelte";
   import EditorButtonGroup from "../components/EditorButtonGroup.svelte";
   import Copyright from "../components/Copyright.svelte";
+  import firebase from "firebase/app";
+  import "firebase/auth";
+  import { push } from "svelte-spa-router";
 
   const isLandScape: boolean = window.innerWidth > window.innerHeight;
   const cardWidth: string = isLandScape ? "20vw" : "80vw";
   const cardHeight: string = isLandScape ? "60vh" : "23vh";
+
+  firebase.auth().onAuthStateChanged((user: any) => {
+    if (!user) push("/signin");
+  });
 </script>
 
 <div class="header-container">

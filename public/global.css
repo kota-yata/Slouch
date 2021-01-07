@@ -26,6 +26,25 @@ button {
   cursor: pointer;
 }
 
-.preview-note h1 {
+@font-face {
+  font-family: "Cica";
+  src: local("Cica Regular"), url("../fonts/Cica-regular/Cica-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+.preview-note h1,.preview-note h2,.preview-note h3,.preview-note h4,.preview-note h5, .preview-note h6 {
   margin: 0;
+}
+.preview-note p {
+  margin: 0.5em 0;
+}
+.preview-note img {
+  max-width: 90%;
+}
+.preview-note pre {
+  background: #ececec;
+  overflow: scroll;
+  padding: 10px;
+  font-family: "Cica";
 }

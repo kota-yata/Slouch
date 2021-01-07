@@ -44,9 +44,12 @@
     if (!isObject(DOMObj)) throw "DOMObj in parseElement() must be an object (a.k.a associative array)";
     marked.setOptions({
       langPrefix: "",
-      highlight: (code: any, lang: any): string => {
+      highlight: (code: any, lang: any): any => {
         return hljs.highlightAuto(code, [lang]).value;
       },
+      gfm: true,
+      breaks: true,
+      mangle: true,
     });
     const originalText: string = DOMObj.mainNote.value;
     const unsanitizedDirtyElement: string = marked(originalText);
@@ -74,8 +77,8 @@
   };
 </script>
 
-<textarea class="main-note center-content" id="main_note"></textarea>
-<div class="preview-note center-content" id="preview_note"></div>
+<textarea class="main-note center-content syncscroll" name="sameScroll" id="main_note"></textarea>
+<div class="preview-note center-content syncscroll" name="sameScroll" id="preview_note"></div>
 
 <style lang="scss">
   @import "../assets/definition.scss";
@@ -98,6 +101,8 @@
     font-size: 20px;
     resize: none;
     padding: $center-note-padding;
+    word-wrap: break-word;
+    overflow-y: scroll;
   }
   .main-note {
     z-index: 3;
