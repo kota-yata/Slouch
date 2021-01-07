@@ -16,9 +16,9 @@
   const cardWidth: string = isLandScape ? "20vw" : "80vw";
   const cardHeight: string = isLandScape ? "60vh" : "23vh";
 
-  firebase.auth().onAuthStateChanged((user: any) => {
+  /* firebase.auth().onAuthStateChanged((user: any) => {
     if (!user) push("/signin");
-  });
+  }); */
 </script>
 
 <div class="header-container">
