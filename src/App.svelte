@@ -2,6 +2,7 @@
   import Router from "svelte-spa-router";
   import Home from "./routes/Home.svelte";
   import SignIn from "./routes/SignIn.svelte";
+  import PrivacyPolicy from "./routes/PrivacyPolicy.svelte";
   import { setUpFirebase } from "./components/Firebase.svelte";
   import "firebase/auth";
 
@@ -10,6 +11,7 @@
   const routes = {
     "/": Home,
     "/signin/": SignIn,
+    "/privacy-policy": PrivacyPolicy,
   };
 </script>
 

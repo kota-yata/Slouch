@@ -31,6 +31,15 @@ $center-note-padding: 5vh;
   font-display: swap;
 }
 
+// プライバシーポリシー用日本語中字フォント
+@font-face {
+  font-family: "nsjp";
+  src: local("Noto Sans JP Medium"), url("../fonts/NSJP-medium/NotoSansJP-Medium.woff") format("woff"),
+    url("../fonts/NSJP-medium/NotoSansJP-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-display: swap;
+}
+
 // 日本語通常フォント
 @font-face {
   font-family: "nsjp";
