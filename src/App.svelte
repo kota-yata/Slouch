@@ -5,6 +5,7 @@
   import PrivacyPolicy from "./routes/PrivacyPolicy.svelte";
   import { setUpFirebase } from "./components/Firebase.svelte";
   import "firebase/auth";
+  import TermOfUse from "./routes/TermOfUse.svelte";
 
   setUpFirebase();
 
@@ -12,6 +13,7 @@
     "/": Home,
     "/signin/": SignIn,
     "/privacy-policy": PrivacyPolicy,
+    "/term-of-use": TermOfUse,
   };
 </script>
 

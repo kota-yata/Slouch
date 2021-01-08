@@ -54,6 +54,7 @@
         <AuthButton id="in_github" iconToImport="github" title="Sign in with Github" onclick="{signInWithGitHub}" />
       </div>
       <div><a href="/privacy-policy" use:link>プライバシーポリシー</a></div>
+      <div class="term-container"><a href="/term-of-use" use:link>利用規約</a></div>
     </div>
   </div>
   <div class="right-container screen-division">
@@ -97,6 +98,9 @@
         div {
           @extend %center;
           margin-top: 5vh;
+        }
+        .term-container {
+          margin-top: 1vh;
         }
       }
     }
