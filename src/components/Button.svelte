@@ -18,6 +18,7 @@
     transition: 0.1s;
     &:hover {
       background: $slouch-deep-green;
+      transition: 0.1s;
     }
   }
 </style>
