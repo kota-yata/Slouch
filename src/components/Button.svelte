@@ -15,5 +15,9 @@
     color: $complete-white;
     padding: 10px;
     box-shadow: 2px 2px 5px $shadow-white, -2px -2px 5px $general-white;
+    transition: 0.1s;
+    &:hover {
+      background: $slouch-deep-green;
+    }
   }
 </style>
