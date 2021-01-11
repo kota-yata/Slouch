@@ -19,15 +19,27 @@
   /* firebase.auth().onAuthStateChanged((user: any) => {
     if (!user) push("/signin");
   }); */
+
+  const backSideCard = (): void => {
+    const toolCard: HTMLElement | null = document.getElementById("tool_card");
+    if (!toolCard) throw new Error("Tool card doesn't exist");
+    toolCard.classList.remove("visible");
+    const toBeInserted: HTMLElement | null = document.getElementById("to_be_inserted");
+    if (!toBeInserted) throw new Error("toBeInserted div doesn't exist");
+    toBeInserted.textContent = "";
+  };
 </script>
 
 <div class="header-container">
   <HeaderLogo />
 </div>
-<div class="tool-card" id="tool_card">
+<div class="tool-card right-card side-card" id="tool_card">
   <SideCard width="{cardWidth}">
     <div slot="content">
-      <button data-tooltip="Ctrl + backspace" class="backward-button"><i class="fas fa-angle-left"></i></button>
+      <button data-tooltip="Ctrl + backspace" class="backward-button" id="backward_button" on:click="{backSideCard}"><i
+          class="fas fa-angle-left"
+        ></i></button>
+      <div id="to_be_inserted"></div>
     </div>
   </SideCard>
 </div>
@@ -95,9 +107,6 @@
   .right-card {
     z-index: 5;
     right: 2vw;
-    visibility: visible;
-    opacity: 1;
-    transition: 0.1s;
   }
 
   @media (max-aspect-ratio: 1/1) {

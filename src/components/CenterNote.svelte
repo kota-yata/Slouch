@@ -98,6 +98,7 @@
     ); // A4サイズ(1:1.414)に横幅を合わせ、ページの横幅/2 - テキストエリアの横幅/2 - paddingで左右センタリングする
     background: $complete-white;
     font-family: "nsjp", sans-serif;
+    font-weight: 500;
     font-size: 20px;
     resize: none;
     padding: $center-note-padding;
@@ -109,6 +110,7 @@
   }
   .preview-note {
     z-index: 2;
+    font-weight: 400;
   }
 
   @media (max-aspect-ratio: 1/1) {

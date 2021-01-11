@@ -2,6 +2,8 @@
   import { push } from "svelte-spa-router";
   import firebase from "firebase/app";
   import "firebase/auth";
+  import { downloadInsertHTML } from "./fileButtonGroup/Download.svelte";
+  import { overwriteInsertHTML } from "./fileButtonGroup/Overwrite.svelte";
 
   interface fileButton {
     icon: string;
@@ -17,28 +19,39 @@
         push("/signin");
       });
   };
-
-  const toggleToolCard = (): void => {
+  const toggleToolCard = (icon: string): void => {
     const toolCard: HTMLElement | null = document.getElementById("tool_card");
-    if (!toolCard) throw "Tool card doesn't exist";
-    toolCard.classList.add("right-card");
-    toolCard.classList.add("side-card");
+    if (!toolCard) throw new Error("Tool card doesn't exist");
+    toolCard.classList.add("visible");
     toolCard.style.zIndex = "7";
+    const toBeInserted: HTMLElement | null = document.getElementById("to_be_inserted");
+    if (!toBeInserted) throw new Error("toBeInserted div doesn't exist");
+    if (icon === "download") downloadInsertHTML(toBeInserted);
+    if (icon === "save") overwriteInsertHTML(toBeInserted);
+  };
+  const jumpToHelp = (): void => {
+    window.open("#/help");
   };
 
   const fileButtonArray: fileButton[] = [
     { icon: "user-circle", words: "マイノート" },
     { icon: "plus", words: "新規作成" },
-    { icon: "save", words: "上書き保存" },
+    { icon: "save", words: "上書き保存", onclick: toggleToolCard },
     { icon: "download", words: "ダウンロード", onclick: toggleToolCard },
-    { icon: "question", words: "ヘルプ" },
+    { icon: "question", words: "ヘルプ", onclick: jumpToHelp },
     { icon: "sign-out-alt", words: "サインアウト", onclick: signOut },
   ];
 </script>
 
 <div class="file-button-container">
   {#each fileButtonArray as { icon, words, onclick }, i}
-    <button class="file-button" id="{icon}" on:click="{onclick}">
+    <button
+      class="file-button"
+      id="{icon}"
+      on:click="{() => {
+        onclick(icon);
+      }}"
+    >
       <span class="fas fa-{icon} file-button-icon"></span>
       <span class="file-button-words">{words}</span>
     </button>

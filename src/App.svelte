@@ -6,6 +6,7 @@
   import { setUpFirebase } from "./components/Firebase.svelte";
   import "firebase/auth";
   import TermOfUse from "./routes/TermOfUse.svelte";
+  import HelpPage from "./routes/HelpPage.svelte";
 
   setUpFirebase();
 
@@ -14,6 +15,7 @@
     "/signin/": SignIn,
     "/privacy-policy": PrivacyPolicy,
     "/term-of-use": TermOfUse,
+    "/help": HelpPage,
   };
 </script>
 
