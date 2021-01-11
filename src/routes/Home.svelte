@@ -16,13 +16,20 @@
   const cardWidth: string = isLandScape ? "20vw" : "80vw";
   const cardHeight: string = isLandScape ? "60vh" : "23vh";
 
-  firebase.auth().onAuthStateChanged((user: any) => {
+  /* firebase.auth().onAuthStateChanged((user: any) => {
     if (!user) push("/signin");
-  });
+  }); */
 </script>
 
 <div class="header-container">
   <HeaderLogo />
+</div>
+<div class="tool-card" id="tool_card">
+  <SideCard width="{cardWidth}">
+    <div slot="content">
+      <button data-tooltip="Ctrl + backspace" class="backward-button"><i class="fas fa-angle-left"></i></button>
+    </div>
+  </SideCard>
 </div>
 <div class="right-card side-card">
   <SideCard width="{cardWidth}">
@@ -64,9 +71,33 @@
   .left-card {
     left: 2vw;
   }
+  .tool-card {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.1s;
+    .backward-button {
+      color: $slouch-green;
+      font-size: 25px;
+      margin: 10px;
+      padding: 5px;
+      width: 50px;
+      border-radius: 10px;
+      transition: 0.1s;
+      i {
+        cursor: pointer;
+      }
+      &:hover {
+        background: $general-white;
+        transition: 0.1s;
+      }
+    }
+  }
   .right-card {
     z-index: 5;
     right: 2vw;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.1s;
   }
 
   @media (max-aspect-ratio: 1/1) {

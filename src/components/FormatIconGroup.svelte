@@ -1,9 +1,28 @@
 <script lang="ts">
-  const formatIconArray = ["bold", "italic", "underline"];
+  interface formatIconObject {
+    name: string;
+    tooltip: string;
+  }
+  const formatIconObject: formatIconObject[] = [
+    {
+      name: "bold",
+      tooltip: "Ctrl + b",
+    },
+    {
+      name: "italic",
+      tooltip: "Ctrl + i",
+    },
+    {
+      name: "underline",
+      tooltip: "Ctrl + u",
+    },
+  ];
 </script>
 
 <div class="format-icon-group">
-  {#each formatIconArray as string, i}<button class="fas fa-{string}"></button>{/each}
+  {#each formatIconObject as { name, tooltip }, i}
+    <button data-tooltip="{tooltip}"><i class="fas fa-{name}"></i></button>
+  {/each}
 </div>
 
 <style lang="scss">
@@ -17,7 +36,7 @@
     button {
       @extend %center;
       background: transparent;
-      padding: 20px;
+      padding: 15px;
       margin-left: 5px;
       margin-right: 5px;
       transition: 0.1s;

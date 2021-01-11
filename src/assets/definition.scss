@@ -76,6 +76,14 @@ $center-note-padding: 5vh;
   font-display: swap;
 }
 
+// プレビューのcodeタグ用フォント
+@font-face {
+  font-family: "Cica";
+  src: local("Cica Regular"), url("../fonts/Cica-regular/Cica-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
 // 左右センタリングのテンプレート
 %center {
   margin: 0 auto;

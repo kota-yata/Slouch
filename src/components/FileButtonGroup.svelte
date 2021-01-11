@@ -18,11 +18,19 @@
       });
   };
 
+  const toggleToolCard = (): void => {
+    const toolCard: HTMLElement | null = document.getElementById("tool_card");
+    if (!toolCard) throw "Tool card doesn't exist";
+    toolCard.classList.add("right-card");
+    toolCard.classList.add("side-card");
+    toolCard.style.zIndex = "7";
+  };
+
   const fileButtonArray: fileButton[] = [
     { icon: "user-circle", words: "マイノート" },
     { icon: "plus", words: "新規作成" },
     { icon: "save", words: "上書き保存" },
-    { icon: "download", words: "ダウンロード" },
+    { icon: "download", words: "ダウンロード", onclick: toggleToolCard },
     { icon: "question", words: "ヘルプ" },
     { icon: "sign-out-alt", words: "サインアウト", onclick: signOut },
   ];
