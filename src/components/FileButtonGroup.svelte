@@ -4,6 +4,7 @@
   import "firebase/auth";
   import { downloadInsertHTML } from "./fileButtonGroup/Download.svelte";
   import { overwriteInsertHTML } from "./fileButtonGroup/Overwrite.svelte";
+  import { newFileInsertHTML } from "./fileButtonGroup/NewFile.svelte";
 
   interface fileButton {
     icon: string;
@@ -28,14 +29,15 @@
     if (!toBeInserted) throw new Error("toBeInserted div doesn't exist");
     if (icon === "download") downloadInsertHTML(toBeInserted);
     if (icon === "save") overwriteInsertHTML(toBeInserted);
+    if (icon === "plus") newFileInsertHTML(toBeInserted);
   };
   const jumpToHelp = (): void => {
     window.open("#/help");
   };
 
   const fileButtonArray: fileButton[] = [
-    { icon: "user-circle", words: "マイノート" },
-    { icon: "plus", words: "新規作成" },
+    { icon: "user-circle", words: "マイノート", onclick: toggleToolCard },
+    { icon: "plus", words: "新規作成", onclick: toggleToolCard },
     { icon: "save", words: "上書き保存", onclick: toggleToolCard },
     { icon: "download", words: "ダウンロード", onclick: toggleToolCard },
     { icon: "question", words: "ヘルプ", onclick: jumpToHelp },
