@@ -99,7 +99,7 @@
     background: $complete-white;
     font-family: "nsjp", sans-serif;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 15px;
     resize: none;
     padding: $center-note-padding;
     word-wrap: break-word;
