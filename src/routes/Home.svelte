@@ -36,7 +36,7 @@
 <div class="tool-card right-card side-card" id="tool_card">
   <SideCard width="{cardWidth}">
     <div slot="content">
-      <button data-tooltip="Ctrl + backspace" class="backward-button" id="backward_button" on:click="{backSideCard}"><i
+      <button class="backward-button" id="backward_button" on:click="{backSideCard}"><i
           class="fas fa-angle-left"
         ></i></button>
       <div id="to_be_inserted"></div>

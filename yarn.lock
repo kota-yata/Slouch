@@ -650,6 +650,11 @@ braces@^3.0.1, braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
+braintree-jsdoc-template@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/braintree-jsdoc-template/-/braintree-jsdoc-template-3.3.0.tgz#6a98a8c209673caab752e19dfa4408850a9439fe"
+  integrity sha512-sjkq3w1Dt1HO/yKa2WzFpsi+cuO5qv0kD2kHl6T0amdrnQX9T7sQBBde56iYR1dzXFYMXyh7ti/662v9/00bGw==
+
 buffer-equal-constant-time@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/buffer-equal-constant-time/-/buffer-equal-constant-time-1.0.1.tgz#f8e71132f7ffe6e01a5c9697a4c6f3e48d5cc819"
@@ -1903,6 +1908,13 @@ nan@^2.13.2:
   version "2.14.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.1.tgz#d7be34dfa3105b91494c3147089315eff8874b01"
   integrity sha512-isWHgVjnFjh2x2yuJ/tj3JbwoHu3UC2dX5G/88Cm24yB6YopVgxvBObDY7n5xW6ExmFhJpSEQqFPvq9zaXc8Jw==
+
+neornd@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/neornd/-/neornd-2.3.1.tgz#722559827ac6685cf954db19265e713ce866bd59"
+  integrity sha512-xfnALTlcNRVGtmMmoS8RsTYgBIO0WMHL66JLw0ZJGugsIXy0iz4PgWuihvLN7I6Pqx71eUVLoTm3CNmvAPLbcA==
+  dependencies:
+    braintree-jsdoc-template "^3.3.0"
 
 no-case@^3.0.3:
   version "3.0.3"

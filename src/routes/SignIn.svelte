@@ -21,7 +21,7 @@
 
   const checkFirebaseStatus = (): void => {
     firebase.auth().onAuthStateChanged((user: any) => {
-      if (!user) throw new Error("Failed to sign in/up...");
+      if (!user) return;
       console.log("Success");
       push("/");
     });

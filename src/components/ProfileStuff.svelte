@@ -2,26 +2,52 @@
 </script>
 
 <div class="profile-stuff">
-  <label> <input type="text" name="title" placeholder="ノートのタイトル" value="無題のノート" /> </label>
+  <div id="title_input_container">
+    <label> <input type="text" name="title" placeholder="ノートのタイトル" value="無題のノート" /> </label>
+    <button id="title_save">保存</button>
+  </div>
 </div>
 
 <style lang="scss">
   @import "../assets/definition.scss";
 
   .profile-stuff {
-    @extend %center;
     width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-bottom: $slouch-border;
-    padding: 5% 0 3% 0;
+    margin: 0 auto;
+    padding: 5%;
     max-height: 6.5vh;
     overflow-y: scroll;
-    input {
-      @extend %center;
-      font-weight: bold;
-      font-size: 20px;
-      color: $slouch-navy;
-      vertical-align: middle;
-      word-wrap: break-word;
+    #title_input_container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px $slouch-green solid;
+      border-radius: 5px;
+      label {
+        width: 70%;
+        input {
+          width: calc(100% - 5px);
+          padding-left: 5px;
+          font-weight: bold;
+          font-size: 15px;
+          color: $slouch-navy;
+          word-break: keep-all;
+          overflow-x: scroll;
+        }
+      }
+      #title_save {
+        width: 30%;
+        padding: 10px;
+        background: $slouch-green;
+        color: $complete-white;
+        font-family: "nsjp";
+        font-weight: bold;
+      }
     }
   }
 
