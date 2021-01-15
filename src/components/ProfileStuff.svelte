@@ -3,7 +3,9 @@
 
 <div class="profile-stuff">
   <div id="title_input_container">
-    <label> <input type="text" name="title" placeholder="ノートのタイトル" value="無題のノート" /> </label>
+    <label>
+      <input type="text" name="title" placeholder="ノートのタイトル" id="note_title" value="無題のノート" />
+    </label>
     <button id="title_save">保存</button>
   </div>
 </div>
@@ -38,6 +40,9 @@
           color: $slouch-navy;
           word-break: keep-all;
           overflow-x: scroll;
+          &::placeholder {
+            color: $shadow-navy;
+          }
         }
       }
       #title_save {

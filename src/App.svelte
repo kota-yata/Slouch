@@ -4,7 +4,6 @@
   import SignIn from "./routes/SignIn.svelte";
   import PrivacyPolicy from "./routes/PrivacyPolicy.svelte";
   import { setUpFirebase } from "./components/Firebase.svelte";
-  import "firebase/auth";
   import TermOfUse from "./routes/TermOfUse.svelte";
   import HelpPage from "./routes/HelpPage.svelte";
 

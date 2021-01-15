@@ -103,6 +103,7 @@
     resize: none;
     padding: $center-note-padding;
     word-wrap: break-word;
+    white-space: pre-wrap;
     overflow-y: scroll;
   }
   .main-note {

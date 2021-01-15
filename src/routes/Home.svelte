@@ -16,8 +16,10 @@
   const cardWidth: string = isLandScape ? "20vw" : "80vw";
   const cardHeight: string = isLandScape ? "60vh" : "23vh";
 
+  let uid: string = "";
   firebase.auth().onAuthStateChanged((user: any): any => {
     if (!user) return push("/signin");
+    sessionStorage.setItem("uid", user.uid);
   });
 
   const backSideCard = (): void => {
@@ -109,6 +111,7 @@
     right: 2vw;
   }
   #to_be_inserted {
+    @extend %center;
     height: calc(60vh - 90px);
     overflow-y: scroll;
   }

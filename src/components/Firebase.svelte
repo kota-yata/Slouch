@@ -1,6 +1,5 @@
 <script lang="ts" context="module">
   import firebase from "firebase/app";
-  import "firebase/auth";
   import "firebase/analytics";
 
   export const setUpFirebase = (): void => {
