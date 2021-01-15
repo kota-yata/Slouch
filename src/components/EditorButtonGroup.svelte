@@ -47,8 +47,8 @@
 </script>
 
 <div class="editor-button-group">
-  <button class="editor-button" id="Preview" data-tooltip="Ctrl + e"><i class="fas fa-eye"></i></button>
-  <button class="editor-button" id="Editor" data-tooltip="Ctrl + e" disabled><i class="fas fa-pencil-alt"></i></button>
+  <button class="editor-button" id="Preview" data-tooltip="Ctrl + E"><i class="fas fa-eye"></i></button>
+  <button class="editor-button" id="Editor" data-tooltip="Ctrl + E" disabled><i class="fas fa-pencil-alt"></i></button>
 </div>
 
 <style lang="scss">

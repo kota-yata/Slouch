@@ -4,7 +4,7 @@
   import marked from "marked";
   import hljs from "highlight.js";
   import DOMPurify from "dompurify";
-  import { isArray, isObject } from "../jsTypeCheck/typecheck";
+  import { isArray, isObject } from "../utils/typecheck";
 
   // getDOMの命令文字列でobjectが指定された場合の型
   interface centerNotesObj {

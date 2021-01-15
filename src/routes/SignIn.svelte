@@ -4,7 +4,7 @@
   import { push, link } from "svelte-spa-router";
   import AuthButton from "../components/AuthButton.svelte";
   import HeaderLogo from "../components/svgComponents/HeaderLogo.svelte";
-  import SignInStories from "../components/svgComponents/SignInStories.svelte";
+  import SignInStories from "../components/svgComponents/SigninStories.svelte";
 
   interface provider {
     Hb: any;
@@ -20,11 +20,10 @@
   const providerGoogle: provider = new firebase.auth.GoogleAuthProvider();
 
   const checkFirebaseStatus = (): void => {
-    firebase.auth().onAuthStateChanged(function (user: any) {
-      if (user) {
-        push("/");
-        console.log("success!");
-      }
+    firebase.auth().onAuthStateChanged((user: any) => {
+      if (!user) throw new Error("Failed to sign in/up...");
+      console.log("Success");
+      push("/");
     });
   };
 

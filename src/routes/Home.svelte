@@ -16,9 +16,9 @@
   const cardWidth: string = isLandScape ? "20vw" : "80vw";
   const cardHeight: string = isLandScape ? "60vh" : "23vh";
 
-  /* firebase.auth().onAuthStateChanged((user: any) => {
-    if (!user) push("/signin");
-  }); */
+  firebase.auth().onAuthStateChanged((user: any): any => {
+    if (!user) return push("/signin");
+  });
 
   const backSideCard = (): void => {
     const toolCard: HTMLElement | null = document.getElementById("tool_card");
@@ -107,6 +107,10 @@
   .right-card {
     z-index: 5;
     right: 2vw;
+  }
+  #to_be_inserted {
+    height: calc(60vh - 90px);
+    overflow-y: scroll;
   }
 
   @media (max-aspect-ratio: 1/1) {

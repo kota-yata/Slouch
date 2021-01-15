@@ -5,6 +5,7 @@
   import { downloadInsertHTML } from "./fileButtonGroup/Download.svelte";
   import { overwriteInsertHTML } from "./fileButtonGroup/Overwrite.svelte";
   import { newFileInsertHTML } from "./fileButtonGroup/NewFile.svelte";
+  import { myNoteInsertHTML } from "./fileButtonGroup/MyNote.svelte";
 
   interface fileButton {
     icon: string;
@@ -30,6 +31,7 @@
     if (icon === "download") downloadInsertHTML(toBeInserted);
     if (icon === "save") overwriteInsertHTML(toBeInserted);
     if (icon === "plus") newFileInsertHTML(toBeInserted);
+    if (icon === "user-circle") myNoteInsertHTML(toBeInserted);
   };
   const jumpToHelp = (): void => {
     window.open("#/help");

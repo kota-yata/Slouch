@@ -6,15 +6,15 @@
   const formatIconObject: formatIconObject[] = [
     {
       name: "bold",
-      tooltip: "Ctrl + b",
+      tooltip: "Ctrl + B",
     },
     {
       name: "italic",
-      tooltip: "Ctrl + i",
+      tooltip: "Ctrl + I",
     },
     {
-      name: "underline",
-      tooltip: "Ctrl + u",
+      name: "strikethrough",
+      tooltip: "Ctrl + X",
     },
   ];
 </script>

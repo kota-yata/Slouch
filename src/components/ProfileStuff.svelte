@@ -1,14 +1,9 @@
 <script lang="ts">
-  import firebase from "firebase/app";
-  import "firebase/auth";
-  let emailAddress = "No email address";
-  firebase.auth().onAuthStateChanged((user: any) => {
-    if (!user) return;
-    emailAddress = user.email;
-  });
 </script>
 
-<div class="profile-stuff"><span id="email_address" class="profile-stuff-email">{emailAddress}</span></div>
+<div class="profile-stuff">
+  <label> <input type="text" name="title" placeholder="ノートのタイトル" value="無題のノート" /> </label>
+</div>
 
 <style lang="scss">
   @import "../assets/definition.scss";
@@ -17,13 +12,14 @@
     @extend %center;
     width: 80%;
     border-bottom: $slouch-border;
-    padding: 5% 0;
+    padding: 5% 0 3% 0;
     max-height: 6.5vh;
     overflow-y: scroll;
-    &-email {
+    input {
+      @extend %center;
       font-weight: bold;
       font-size: 20px;
-      color: $slouch-green;
+      color: $slouch-navy;
       vertical-align: middle;
       word-wrap: break-word;
     }
@@ -32,7 +28,7 @@
   @media screen and (max-width: 1200px) {
     .profile-stuff {
       width: 90%;
-      &-email {
+      input {
         font-size: 13px;
       }
     }
