@@ -42,8 +42,6 @@
     });
   };
 
-  const uid: string | null = sessionStorage.getItem("uid");
-  if (!uid) throw new Error("uid doesn't exist");
   const html: string = `
   <div class="container">\
     <span class="file-sentence">方法を選ぶ</span>\
