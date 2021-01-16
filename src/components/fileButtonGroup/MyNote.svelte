@@ -1,7 +1,5 @@
 <script lang="ts" context="module">
-  import firebase from "firebase/app";
-  import "firebase/firestore";
-  import { getDbRoot } from "../../utils/dbUtils.js";
+  import { getDbRoot, insertTitle, insertBody } from "../../utils/dbUtils.js";
 
   // ノート一つ一つのタイトルと最終更新日のDOMを生成する
   const generateHTML = (nid: string, title: string, date: string): string => {
@@ -22,7 +20,7 @@
       if (keyArray[i] === "current") continue;
       const obj: notesObj = {
         nid: keyArray[i],
-        name: dbRoot.current.data()[keyArray[i]].name,
+        title: dbRoot.current.data()[keyArray[i]].title,
         date: dbRoot.current.data()[keyArray[i]].date,
         body: dbRoot.current.data()[keyArray[i]].body,
       };
@@ -40,14 +38,8 @@
       },
       { merge: true },
     );
-    // main_noteにbodyを挿入
-    const mainNote: HTMLElement | null = document.getElementById("main_note");
-    if (!mainNote) throw new Error("mainNote doesn't exist");
-    mainNote.textContent = body;
-    // タイトルを挿入
-    const noteTitle: HTMLInputElement | null = document.getElementById("note_title") as HTMLInputElement;
-    if (!noteTitle) throw new Error("noteTitle doesn't exist");
-    noteTitle.value = title;
+    insertTitle(title);
+    insertBody(body);
   };
 
   export const myNoteInsertHTML = async (element: HTMLElement) => {
@@ -57,13 +49,15 @@
     noteDataArray.map((note: notesObj) => {
       const nid: string | undefined = note.nid;
       if (!nid) throw new Error("nid doesn't exist");
-      const noteHTML: string = generateHTML(nid, note.name, note.date);
+      const noteHTML: string = generateHTML(nid, note.title, note.date);
       element.insertAdjacentHTML("beforeend", noteHTML);
       const noteButton: HTMLElement | null = document.getElementById(nid);
       if (!noteButton) throw new Error("noteButton doesn't exist");
       noteButton.addEventListener("click", () => {
-        individualNoteOnclick(nid, note.name, note.body);
+        console.log("--- Firebase one of mynote buttons was clicked ---");
+        individualNoteOnclick(nid, note.title, note.body);
       });
     });
+    console.log("--- Firebase mynote is being shown ---");
   };
 </script>

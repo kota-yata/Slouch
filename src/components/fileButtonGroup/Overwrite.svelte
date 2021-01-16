@@ -5,7 +5,7 @@
   import { generateRandomNID, generateFormattedDate, getDbRoot } from "../../utils/dbUtils.js";
 
   // SLOUCHノートを上書きする
-  // currentのIDが存在する場合はそのNIDのname, date, bodyを更新する
+  // currentのIDが存在する場合はそのNIDのtitle, date, bodyを更新する
   export const overwriteSlouchOnclick = (): void => {
     const overwriteSlouch: HTMLElement | null = document.getElementById("overwrite_slouch");
     if (!overwriteSlouch) throw new Error("overwriteSlouch button doesn't exist");
@@ -17,7 +17,7 @@
       if (!noteContentDom) throw new Error("noteContentDom doesn't exist");
       const dbRoot: dbRoot = await getDbRoot();
       const dataObj: notesObj = {
-        name: noteTitleDom.value,
+        title: noteTitleDom.value,
         date: generateFormattedDate(),
         body: noteContentDom.value,
       };

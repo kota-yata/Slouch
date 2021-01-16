@@ -11,15 +11,28 @@
   import firebase from "firebase/app";
   import "firebase/auth";
   import { push } from "svelte-spa-router";
+  import { getDbRoot, insertBody } from "../utils/dbUtils.js";
 
   const isLandScape: boolean = window.innerWidth > window.innerHeight;
   const cardWidth: string = isLandScape ? "20vw" : "80vw";
   const cardHeight: string = isLandScape ? "60vh" : "23vh";
 
-  let uid: string = "";
   firebase.auth().onAuthStateChanged((user: any): any => {
     if (!user) return push("/signin");
     sessionStorage.setItem("uid", user.uid);
+    console.log("--- Firebase user is detected && uid is registered to session storage ---");
+  });
+
+  let titleValue: string = "無題のノート";
+
+  window.addEventListener("DOMContentLoaded", async () => {
+    console.log("--- DOM contents are loaded ---");
+    const dbRoot: dbRoot = await getDbRoot();
+    if (!dbRoot.current.exists) return;
+    const currentNote: any = dbRoot.current.data().current;
+    titleValue = dbRoot.current.data()[currentNote].title;
+    const currentNoteBody: string = dbRoot.current.data()[currentNote].body;
+    insertBody(currentNoteBody);
   });
 
   const backSideCard = (): void => {
@@ -48,7 +61,7 @@
 <div class="right-card side-card">
   <SideCard width="{cardWidth}">
     <div slot="content">
-      <ProfileStuff />
+      <ProfileStuff bind:titleValue />
       <FileButtonGroup />
       <Copyright />
     </div>

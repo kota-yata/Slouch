@@ -1,10 +1,11 @@
 <script lang="ts">
+  export let titleValue: string = "無題のノート";
 </script>
 
 <div class="profile-stuff">
   <div id="title_input_container">
     <label>
-      <input type="text" name="title" placeholder="ノートのタイトル" id="note_title" value="無題のノート" />
+      <input type="text" name="title" placeholder="ノートのタイトル" id="note_title" bind:value="{titleValue}" />
     </label>
     <button id="title_save">保存</button>
   </div>

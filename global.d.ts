@@ -7,12 +7,17 @@ declare const lazyload: any;
 
 interface notesObj {
   nid?: string | undefined;
-  name: string;
+  title: string;
   date: string;
   body: string;
+  fileHandle?: string;
 }
 
 interface dbRoot {
   uRoot: any;
   current: any;
+}
+
+interface Window {
+  showSaveFilePicker: any;
 }

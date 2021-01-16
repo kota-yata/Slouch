@@ -28,10 +28,9 @@ export const generateFormattedDate = () => {
   return formattedDate;
 };
 
-const uid = sessionStorage.getItem("uid");
-
 // ログイン中のユーザーのコレクションを取得する
 export const getDbRoot = async () => {
+  const uid = sessionStorage.getItem("uid");
   const database = firebase.firestore();
   const uRoot = database.collection("users").doc(uid);
   const current = await uRoot.get();
@@ -39,4 +38,20 @@ export const getDbRoot = async () => {
     uRoot: uRoot,
     current: current,
   };
+};
+
+// タイトルに引数のtitleを挿入する
+export const insertTitle = (title) => {
+  const noteTitle = document.getElementById("note_title");
+  if (!noteTitle) throw new Error("noteTitle doesn't exist");
+  noteTitle.value = title;
+  console.log("--- Firebase mynote title is inserted to profile input ---");
+};
+
+// エディターに引数のbodyを挿入する
+export const insertBody = (body) => {
+  const mainNote = document.getElementById("main_note");
+  if (!mainNote) throw new Error("mainNote doesn't exist");
+  mainNote.textContent = body;
+  console.log("--- Firebase mynote body is inserted to editor textarea ---");
 };
