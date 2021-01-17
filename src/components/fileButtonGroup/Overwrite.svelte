@@ -1,7 +1,5 @@
 <script lang="ts" context="module">
   import { commandType } from "../../utils/checkOS.js";
-  import firebase from "firebase/app";
-  import "firebase/firestore";
   import { generateRandomNID, generateFormattedDate, getDbRoot } from "../../utils/dbUtils.js";
 
   // SLOUCHノートを上書きする
@@ -15,7 +13,8 @@
       if (!noteTitleDom) throw new Error("noteTitleDom doesn't exist");
       const noteContentDom: HTMLInputElement | null = document.getElementById("main_note") as HTMLInputElement;
       if (!noteContentDom) throw new Error("noteContentDom doesn't exist");
-      const dbRoot: dbRoot = await getDbRoot();
+      const dbRoot: dbRoot | null = await getDbRoot();
+      if (!dbRoot) return;
       const dataObj: notesObj = {
         title: noteTitleDom.value,
         date: generateFormattedDate(),

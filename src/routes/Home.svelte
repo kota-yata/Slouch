@@ -27,9 +27,10 @@
 
   window.addEventListener("DOMContentLoaded", async () => {
     console.log("--- DOM contents are loaded ---");
-    const dbRoot: dbRoot = await getDbRoot();
-    if (!dbRoot.current.exists) return;
+    const dbRoot: dbRoot | null = await getDbRoot();
+    if (!dbRoot) return;
     const currentNote: any = dbRoot.current.data().current;
+    if (!currentNote) return;
     titleValue = dbRoot.current.data()[currentNote].title;
     const currentNoteBody: string = dbRoot.current.data()[currentNote].body;
     insertBody(currentNoteBody);

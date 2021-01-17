@@ -13,7 +13,8 @@
 
   // uid内のcurrent以外のノートデータを全て取得して連想配列で返す
   const getNoteFromDb = async () => {
-    const dbRoot: dbRoot = await getDbRoot();
+    const dbRoot: dbRoot | null = await getDbRoot();
+    if (!dbRoot) throw new Error("dbRoot doesn't exist");
     const keyArray: string[] = Object.keys(dbRoot.current.data());
     const resultArray: notesObj[] = [];
     for (let i = 0; i < keyArray.length; i++) {
@@ -31,7 +32,8 @@
 
   // マイノートでノートがクリックされたらnidをcurrentに登録し、bodyをmain_noteに挿入する
   const individualNoteOnclick = async (nid: string, title: string, body: string) => {
-    const dbRoot: dbRoot = await getDbRoot();
+    const dbRoot: dbRoot | null = await getDbRoot();
+    if (!dbRoot) throw new Error("dbRoot doesn't exist");
     dbRoot.uRoot.set(
       {
         current: nid,

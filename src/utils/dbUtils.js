@@ -34,6 +34,7 @@ export const getDbRoot = async () => {
   const database = firebase.firestore();
   const uRoot = database.collection("users").doc(uid);
   const current = await uRoot.get();
+  if (!current.exists) return null;
   return {
     uRoot: uRoot,
     current: current,
