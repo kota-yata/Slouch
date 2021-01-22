@@ -69,11 +69,19 @@ $center-note-padding: 5vh;
   font-display: swap;
 }
 
-// ログインボタン用Robotoフォント
+// プレビューの英字用太字フォント
 @font-face {
-  font-family: "roboto";
-  src: local("Roboto Bold"), url("../fonts/Roboto/Roboto-Bold.ttf") format("truetype");
+  font-family: "inter";
+  src: local("Inter Bold"), url("../fonts/Inter-bold/Inter-Bold") format("truetype");
   font-weight: 700;
+  font-display: swap;
+}
+
+// プレビューの英字用通常フォント
+@font-face {
+  font-family: "inter";
+  src: local("Inter Regular"), url("../fonts/Inter-regular/Inter-Regular") format("truetype");
+  font-weight: 400;
   font-display: swap;
 }
 

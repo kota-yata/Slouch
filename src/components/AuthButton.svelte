@@ -45,7 +45,7 @@
     }
     &-title {
       width: 160px;
-      font-family: "roboto";
+      font-family: "inter";
       font-size: 15px;
       // Googleのガイドラインに沿ったスタイルに統一する
       color: #000000;

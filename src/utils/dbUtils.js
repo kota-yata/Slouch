@@ -32,9 +32,12 @@ export const generateFormattedDate = () => {
 export const getDbRoot = async () => {
   const uid = sessionStorage.getItem("uid");
   const database = firebase.firestore();
-  const uRoot = database.collection("users").doc(uid);
-  const current = await uRoot.get();
-  if (!current.exists) return null;
+  let uRoot = database.collection("users").doc(uid);
+  let current = await uRoot.get();
+  if (!current.exists) {
+    uRoot = null;
+    current = null;
+  }
   return {
     uRoot: uRoot,
     current: current,
@@ -54,5 +57,6 @@ export const insertBody = (body) => {
   const mainNote = document.getElementById("main_note");
   if (!mainNote) throw new Error("mainNote doesn't exist");
   mainNote.textContent = body;
+  mainNote.value = body;
   console.log("--- Firebase mynote body is inserted to editor textarea ---");
 };

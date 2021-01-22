@@ -1,6 +1,6 @@
 <script lang="ts">
   import ComingSoon from "../components/ComingSoon.svelte";
-  import FormatIconGroup from "../components/FormatIconGroup.svelte";
+  import CountGroup from "../components/CountGroup.svelte";
   import HeaderLogo from "../components/svgComponents/HeaderLogo.svelte";
   import CenterNote from "../components/CenterNote.svelte";
   import ProfileStuff from "../components/ProfileStuff.svelte";
@@ -12,6 +12,7 @@
   import "firebase/auth";
   import { push } from "svelte-spa-router";
   import { getDbRoot, insertBody } from "../utils/dbUtils.js";
+  import Toast from "../components/Toast.svelte";
 
   const isLandScape: boolean = window.innerWidth > window.innerHeight;
   const cardWidth: string = isLandScape ? "20vw" : "80vw";
@@ -27,7 +28,7 @@
 
   window.addEventListener("DOMContentLoaded", async () => {
     console.log("--- DOM contents are loaded ---");
-    const dbRoot: dbRoot | null = await getDbRoot();
+    const dbRoot: dbRoot = await getDbRoot();
     if (!dbRoot) return;
     const currentNote: any = dbRoot.current.data().current;
     if (!currentNote) return;
@@ -48,6 +49,9 @@
 
 <div class="header-container">
   <HeaderLogo />
+</div>
+<div class="toast-container">
+  <Toast />
 </div>
 <div class="tool-card right-card side-card" id="tool_card">
   <SideCard width="{cardWidth}">
@@ -75,7 +79,7 @@
   <SideCard width="{cardWidth}" height="{cardHeight}">
     <div class="content" slot="content">
       <EditorButtonGroup />
-      <FormatIconGroup />
+      <CountGroup />
       {#if isLandScape}
         <ComingSoon />
       {/if}

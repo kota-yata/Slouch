@@ -1,4 +1,7 @@
 <script lang="ts" context="module">
+  import { getDbRoot } from "../../utils/dbUtils.js";
+  import { fireToast } from "../../utils/fireToast.js";
+
   const html: string =
     '\
   <div class="container">\
@@ -55,6 +58,16 @@
     return fileHandle;
   };
 
+  const saveFileHandle = async (fileHandle: any) => {
+    const dbRoot: dbRoot | null = await getDbRoot();
+    if (!dbRoot) return;
+    const currentNoteID: any = dbRoot.current.data().current;
+    if (!currentNoteID) return;
+    dbRoot.uRoot.doc(currentNoteID).update({
+      fileHandle: "fileHandle",
+    });
+  };
+
   interface typeDocumentContent {
     dataScheme: string;
     Component: any;
@@ -81,11 +94,13 @@
       console.log("This browser doesn't support File System Access API");
       const URIDataScheme = typeDocumentObject[type].dataScheme;
       writeFileEarlier86(URIDataScheme, component);
+      fireToast("ダウンロード完了！");
       return;
     }
     // Chrome 86 以降
     const fileHandle = await writeFileLater86(type, component);
-    console.log(fileHandle);
+    saveFileHandle(fileHandle);
+    fireToast("ダウンロード完了！");
     return;
   };
 

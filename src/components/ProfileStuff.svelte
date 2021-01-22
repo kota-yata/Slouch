@@ -1,5 +1,18 @@
 <script lang="ts">
+  import { getDbRoot } from "../utils/dbUtils";
+  import { fireToast } from "../utils/fireToast";
   export let titleValue: string = "無題のノート";
+
+  const saveTitle = async (titleValue: string) => {
+    const dbRoot: dbRoot = await getDbRoot();
+    const currentNote: any = dbRoot.current.data().current;
+    if (!currentNote) return;
+    dbRoot.uRoot.update({
+      [`${currentNote}.title`]: titleValue,
+    });
+    console.log("--- New title was saved ---");
+    fireToast("タイトルが保存されました");
+  };
 </script>
 
 <div class="profile-stuff">
@@ -7,7 +20,12 @@
     <label>
       <input type="text" name="title" placeholder="ノートのタイトル" id="note_title" bind:value="{titleValue}" />
     </label>
-    <button id="title_save">保存</button>
+    <button
+      id="title_save"
+      on:click="{() => {
+        saveTitle(titleValue);
+      }}"
+    >保存</button>
   </div>
 </div>
 

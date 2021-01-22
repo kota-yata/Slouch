@@ -1,6 +1,4 @@
 <script lang="ts" context="module">
-  // このコンポーネントにトリガーは存在せず、単体では何もできない
-  // しかし別コンポーネントでこのコンポーネントのDOMを読み込むのも嫌なのでモジュールとしてexportする
   import marked from "marked";
   import hljs from "highlight.js";
   import DOMPurify from "dompurify";
@@ -44,8 +42,9 @@
     if (!isObject(DOMObj)) throw "DOMObj in parseElement() must be an object (a.k.a associative array)";
     marked.setOptions({
       langPrefix: "",
-      highlight: (code: any, lang: any): any => {
-        return hljs.highlightAuto(code, [lang]).value;
+      highlight: (code: string, language: any) => {
+        const validLanguage = hljs.getLanguage(language) ? language : "plaintext";
+        return hljs.highlight(validLanguage, code).value;
       },
       gfm: true,
       breaks: true,
@@ -97,21 +96,22 @@
       50% - #{$center-note-width} / 2 - #{$center-note-padding}
     ); // A4サイズ(1:1.414)に横幅を合わせ、ページの横幅/2 - テキストエリアの横幅/2 - paddingで左右センタリングする
     background: $complete-white;
-    font-family: "nsjp", sans-serif;
-    font-weight: 500;
+    font-family: "inter", "nsjp", arial, sans-serif;
+    font-weight: 400;
     font-size: 15px;
     resize: none;
     padding: $center-note-padding;
     word-wrap: break-word;
-    white-space: pre-wrap;
+    white-space: normal;
     overflow-y: scroll;
+    line-height: 1.8;
   }
   .main-note {
     z-index: 3;
   }
   .preview-note {
     z-index: 2;
-    font-weight: 400;
+    line-height: 1.9;
   }
 
   @media (max-aspect-ratio: 1/1) {

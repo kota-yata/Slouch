@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
   import { commandType } from "../../utils/checkOS.js";
   import { generateRandomNID, generateFormattedDate, getDbRoot } from "../../utils/dbUtils.js";
+  import { fireToast } from "../../utils/fireToast.js";
 
   // SLOUCHノートを上書きする
   // currentのIDが存在する場合はそのNIDのtitle, date, bodyを更新する
@@ -30,6 +31,7 @@
           },
           { merge: true },
         );
+        fireToast(`${noteTitleDom.value}をはじめて保存しました`);
         return;
       }
       dbRoot.uRoot.set(
@@ -38,6 +40,7 @@
         },
         { merge: true },
       );
+      fireToast(`${noteTitleDom.value}を上書きしました`);
     });
   };
 
