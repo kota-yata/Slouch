@@ -1,40 +1,12 @@
 <script lang="ts" context="module">
   import { commandType } from "../../utils/checkOS.js";
   import FileHandler, { generateRandomNID, generateFormattedDate, getDbRoot } from "../../utils/dbUtils.js";
+  import getEditorPreviewDOM from "../../utils/getEditorPreviewDom.js";
   import { fireToast } from "../../utils/fireToast.js";
 
-  class getDOM {
-    noteContentDom: HTMLInputElement;
-    noteTitleDom: HTMLInputElement;
-    constructor() {
-      const noteTitleDom: HTMLInputElement | null = document.getElementById("note_title") as HTMLInputElement;
-      if (!noteTitleDom) throw new Error("noteTitleDom doesn't exist");
-      this.noteTitleDom = noteTitleDom;
-      const noteContentDom: HTMLInputElement | null = document.getElementById("main_note") as HTMLInputElement;
-      if (!noteContentDom) throw new Error("noteContentDom doesn't exist");
-      this.noteContentDom = noteContentDom;
-    }
-    getAllAsObj() {
-      const dataObj: notesObj = {
-        title: this.noteTitleDom.value,
-        date: generateFormattedDate(),
-        body: this.noteContentDom.value,
-      };
-      return dataObj;
-    }
-    getOnlyBody() {
-      return this.noteContentDom.value;
-    }
-    getOnlyTitle() {
-      return this.noteTitleDom.value;
-    }
-  }
-
   // SLOUCHノートを上書きする
-  const writeToSlouch = async () => {
+  export const writeToSlouch = async (dataObj: notesObj) => {
     const dbRoot: dbRoot = await getDbRoot();
-    const DOM = new getDOM();
-    const dataObj: notesObj = DOM.getAllAsObj();
     // currentのIDが空だった場合新しくNIDを発行し、DBに追加する
     if (!dbRoot.current.exists || !dbRoot.current.data().current) {
       const randomNID: string = generateRandomNID();
@@ -58,7 +30,7 @@
   };
 
   const writeToLocal = async () => {
-    const DOM = new getDOM();
+    const DOM = new getEditorPreviewDOM();
     const noteBody: string = DOM.getOnlyBody();
     const fileHandle: any = FileHandler.get();
     const writable: any = await fileHandle.createWritable();
@@ -83,7 +55,9 @@
     if (!overwriteSlouch) throw new Error("overwriteSlouch button doesn't exist");
 
     overwriteSlouch.addEventListener("click", async () => {
-      await writeToSlouch();
+      const DOM = new getEditorPreviewDOM();
+      const dataObj: notesObj = DOM.getAllAsObj();
+      await writeToSlouch(dataObj);
     });
     // 「ローカルを上書き」がクリックされた場合
     const overwriteLocal: HTMLElement | null = document.getElementById("overwrite_local");

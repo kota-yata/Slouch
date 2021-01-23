@@ -46,6 +46,7 @@
     &-title {
       width: 160px;
       font-family: "inter";
+      font-weight: 700;
       font-size: 15px;
       // Googleのガイドラインに沿ったスタイルに統一する
       color: #000000;

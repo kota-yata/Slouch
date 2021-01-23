@@ -24,7 +24,9 @@ export const generateFormattedDate = () => {
   const year = today.getFullYear();
   const month = today.getMonth() + 1;
   const date = today.getDate();
-  const formattedDate = `${year}/${month}/${date}`;
+  const hours = today.getHours();
+  const minutes = today.getMinutes();
+  const formattedDate = `${year}/${month}/${date} ${hours}:${minutes}`;
   return formattedDate;
 };
 

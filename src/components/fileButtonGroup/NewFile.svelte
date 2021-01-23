@@ -1,11 +1,13 @@
 <script lang="ts" context="module">
   import { commandType } from "../../utils/checkOS.js";
   import { insertTitle, insertBody, getDbRoot, generateRandomNID, generateFormattedDate } from "../../utils/dbUtils.js";
+  import getEditorPreviewDOM from "../../utils/getEditorPreviewDom.js";
   import FileHandler from "../../utils/dbUtils.js";
   import firebase from "firebase/app";
   import "firebase/firestore";
   import { fireToast } from "../../utils/fireToast.js";
   import { backToHome } from "../../utils/backToHome.js";
+  import { writeToSlouch } from "../fileButtonGroup/Overwrite.svelte";
 
   const html: string = `
   <div class="container">\
@@ -15,7 +17,15 @@
     <a href="#/help" class="overwrite-a">なにが違うの?</a>\
   </div>`;
 
+  const saveCurrentNoteBeforeClear = (): void => {
+    const DOM = new getEditorPreviewDOM();
+    const dataObj: notesObj = DOM.getAllAsObj();
+    if (dataObj.body === "") return console.log("Since content body is empty, this note wasn't stored to DB.");
+    writeToSlouch(dataObj);
+  };
+
   const openBrandNew = async () => {
+    saveCurrentNoteBeforeClear();
     insertTitle("無題のノート");
     insertBody("");
     const dbRoot: dbRoot = await getDbRoot();
