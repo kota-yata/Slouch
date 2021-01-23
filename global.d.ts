@@ -20,4 +20,5 @@ interface dbRoot {
 
 interface Window {
   showSaveFilePicker: any;
+  showOpenFilePicker: any;
 }

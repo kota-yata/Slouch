@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
   import { getDbRoot } from "../../utils/dbUtils.js";
   import { fireToast } from "../../utils/fireToast.js";
+  import { parseElement } from "../CenterNote.svelte";
 
   const html: string =
     '\
@@ -81,6 +82,8 @@
     const hasShowSaveFilePicker: boolean = "showSaveFilePicker" in window;
     const mainNote: HTMLInputElement | null = document.getElementById("main_note") as HTMLInputElement;
     if (!mainNote) throw new Error("mainNote doesn't exist");
+    // 最後のプレビュー以降の更新を反映させる
+    parseElement();
     const previewNote: HTMLElement | null = document.getElementById("preview_note");
     if (!previewNote) throw new Error("previewNote doesn't exist");
     const typeDocumentObject: typeDocumentObject = {

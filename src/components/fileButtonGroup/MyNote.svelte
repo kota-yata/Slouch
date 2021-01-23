@@ -2,6 +2,7 @@
   import { backToHome } from "../../utils/backToHome.js";
 
   import { getDbRoot, insertTitle, insertBody } from "../../utils/dbUtils.js";
+  import { fireToast } from "../../utils/fireToast.js";
 
   // ノート一つ一つのタイトルと最終更新日のDOMを生成する
   const generateHTML = (nid: string, title: string, date: string): string => {
@@ -44,6 +45,7 @@
     );
     insertTitle(title);
     insertBody(body);
+    fireToast(`${title}を表示中です`);
     backToHome();
   };
 

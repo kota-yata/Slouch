@@ -31,10 +31,12 @@ button {
 .preview-note h1,.preview-note h2,.preview-note h3,.preview-note h4,.preview-note h5, .preview-note h6 {
   margin: 0;
   line-height: 1.5;
-  margin-top: 2.25em;
   margin-bottom: .5em;
 }
-.preview-note h1::before, .preview-note h2::before, .preview-note h3::before,.preview-note h4::before,.preview-note h5::before, .preview-note h6::before {
+.preview-note *+h1,.preview-note *+h2,.preview-note *+h3,.preview-note *+h4,.preview-note *+h5, .preview-note *+h6 {
+  margin-top: 2.25em;
+}
+.preview-note *+h1::before, .preview-note *+h2::before, .preview-note *+h3::before,.preview-note *+h4::before,.preview-note *+h5::before, .preview-note *+h6::before {
   display: block;
   content: " ";
   margin-top: -60px;
@@ -98,7 +100,7 @@ button {
   padding-left: 1.5em;
 }
 .preview-note ul li::marker, .preview-note ol li::marker {
-  color: #46585c;
+  color: #66d17f;
   font-weight: bold;
 }
 .preview-note table {
@@ -252,6 +254,7 @@ button {
   visibility: visible !important;
   animation-duration: 3s;
   animation-name: fade-in;
+  z-index: 12;
 }
 
 @keyframes fade-in {
