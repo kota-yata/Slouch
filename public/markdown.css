@@ -1,0 +1,94 @@
+.preview-note, .preview-note::after, .preview-note::before {
+  box-sizing: inherit;
+}
+.preview-note h1,.preview-note h2,.preview-note h3,.preview-note h4,.preview-note h5, .preview-note h6 {
+  margin: 0;
+  line-height: 1.5;
+  margin-bottom: .5em;
+}
+.preview-note *+h1,.preview-note *+h2,.preview-note *+h3,.preview-note *+h4,.preview-note *+h5, .preview-note *+h6 {
+  margin-top: 2.25em;
+}
+.preview-note *+h1::before, .preview-note *+h2::before, .preview-note *+h3::before,.preview-note *+h4::before,.preview-note *+h5::before, .preview-note *+h6::before {
+  display: block;
+  content: " ";
+  margin-top: -60px;
+  height: 60px;
+  visibility: hidden;
+  pointer-events: none;
+}
+.preview-note h1 {
+  border-bottom: 2px #ececec solid;
+}
+.preview-note h2 {
+  border-bottom: 1px #ececec solid;
+}
+.preview-note h5 {
+  color: #93a5b1;
+  font-size: 1em;
+}
+.preview-note p {
+  margin: 0;
+  margin-top: 0.3em;
+  padding: 0 0.3em;
+}
+.preview-note p code {
+  background: #ececec;
+  padding: 0.3em 0.2em;
+  margin: 0 0.1em;
+  border-radius: 3px;
+}
+.preview-note img {
+  max-width: 100%;
+}
+.preview-note pre {
+  background: #333333;
+  color: #f5f5f5;
+  overflow: scroll;
+  padding: 1.1rem;
+  margin: 1em 0;
+  border-radius: 3px;
+}
+.preview-note code {
+  font-family: "Cica";
+}
+.preview-note blockquote {
+  margin: 1em 0;
+  border-left: 2px #b3bfc7 solid;
+}
+.preview-note blockquote p {
+  margin: 0;
+  color: #626e77;
+  padding-left: 10px;
+}
+.preview-note hr {
+  margin: 0 auto;
+  width: 80%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border: none;
+  border-top: 3px #ececec solid;
+}
+.preview-note ul,.preview-note ol {
+  padding-left: 1.5em;
+}
+.preview-note ul li::marker, .preview-note ol li::marker {
+  color: #66d17f;
+  font-weight: bold;
+}
+.preview-note table {
+  padding: 0.2em;
+  border: 1px #ececec solid;
+  border-collapse: collapse
+}
+
+.preview-note th{
+  padding: 0.2em;
+  border:1px solid #ececec;
+  background: #e1e7e9;
+  color: #46585c;
+}
+.preview-note td{
+  padding: 0.2em;
+  border:1px solid #ececec;
+}

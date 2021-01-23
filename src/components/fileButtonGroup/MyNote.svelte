@@ -6,6 +6,7 @@
 
   // ノート一つ一つのタイトルと最終更新日のDOMを生成する
   const generateHTML = (nid: string, title: string, date: string): string => {
+    // <div class="mynote-delete"><button id="delete_${nid}"><i class="fas fa-trash"></i></button></div>
     const html: string = `
       <button class="mynote-container" id="${nid}">
         <div class="mynote-title">${title}</div>
