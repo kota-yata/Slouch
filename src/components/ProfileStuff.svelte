@@ -42,6 +42,7 @@
     padding: 5%;
     max-height: 6.5vh;
     overflow-y: scroll;
+    font-family: "inter", "nsjp";
     #title_input_container {
       width: 100%;
       display: flex;
@@ -69,7 +70,6 @@
         padding: 10px;
         background: $slouch-green;
         color: $complete-white;
-        font-family: "nsjp";
         font-weight: bold;
       }
     }

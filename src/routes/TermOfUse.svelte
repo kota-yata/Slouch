@@ -9,9 +9,7 @@
   };
 </script>
 
-<div class="logo-container">
-  <a href="https://slouch.dev"><HeaderLogo /></a>
-</div>
+<HeaderLogo />
 <div class="term-of-use">
   <div class="term-of-use-title">
     <h1><i class="fas fa-scroll"></i> 利用規約</h1>
@@ -78,10 +76,6 @@
 <style lang="scss">
   @import "../assets/definition.scss";
 
-  .logo-container {
-    position: fixed;
-    padding: 20px 0px 0px 20px;
-  }
   .term-of-use {
     @extend %center;
     width: 75vw;

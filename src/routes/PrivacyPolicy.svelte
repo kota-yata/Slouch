@@ -9,9 +9,7 @@
   };
 </script>
 
-<div class="logo-container">
-  <a href="https://slouch.dev"><HeaderLogo /></a>
-</div>
+<HeaderLogo />
 <div class="privacy-policy">
   <div class="privacy-policy-title">
     <h1><i class="fas fa-user-shield"></i> プライバシーポリシー</h1>
@@ -54,10 +52,6 @@
 
 <style lang="scss">
   @import "../assets/definition.scss";
-  .logo-container {
-    position: fixed;
-    padding: 20px 0px 0px 20px;
-  }
   .privacy-policy {
     width: 75vw;
     max-width: 1100px;

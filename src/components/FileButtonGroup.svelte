@@ -4,7 +4,7 @@
   import "firebase/auth";
   import { downloadInsertHTML } from "./fileButtonGroup/Download.svelte";
   import { overwriteInsertHTML, writeToLocal, writeToSlouch } from "./fileButtonGroup/Overwrite.svelte";
-  import { newFileInsertHTML } from "./fileButtonGroup/NewFile.svelte";
+  import { newFileInsertHTML, openBrandNew, openLocalFile } from "./fileButtonGroup/NewFile.svelte";
   import { myNoteInsertHTML } from "./fileButtonGroup/MyNote.svelte";
   import getEditorPreviewDOM from "../utils/getEditorPreviewDom.js";
 
@@ -49,9 +49,12 @@
     { icon: "sign-out-alt", words: "サインアウト", onclick: signOut },
   ];
 
+  // ショートカットキーを割り当てる
   window.addEventListener("keydown", (event) => {
+    event.preventDefault();
+    // 上書き
     if (event.key === "s" && event.metaKey) {
-      event.preventDefault();
+      // シフトも押されてたらローカルファイルを上書き
       if (event.shiftKey) {
         writeToLocal();
         return;
@@ -59,6 +62,14 @@
       const DOM = new getEditorPreviewDOM();
       const dataObj: notesObj = DOM.getAllAsObj();
       writeToSlouch(dataObj);
+    }
+    // 新規ノート作成
+    if (event.key === "n" && event.metaKey) {
+      openBrandNew();
+    }
+    // ローカルファイルを読み込む
+    if (event.key === "n" && event.metaKey) {
+      openLocalFile();
     }
   });
 </script>

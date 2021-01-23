@@ -47,9 +47,7 @@
   };
 </script>
 
-<div class="header-container">
-  <HeaderLogo />
-</div>
+<HeaderLogo />
 <div class="toast-container">
   <Toast />
 </div>

@@ -24,7 +24,7 @@
     writeToSlouch(dataObj);
   };
 
-  const openBrandNew = async () => {
+  export const openBrandNew = async () => {
     saveCurrentNoteBeforeClear();
     insertTitle("無題のノート");
     insertBody("");
@@ -34,6 +34,8 @@
       current: firebase.firestore.FieldValue.delete(),
     });
     FileHandler.remove();
+    fireToast("ノートが作成されました！");
+    backToHome();
   };
 
   const saveNewLocalFileToDb = async (title: string, body: string, fileHandle: any) => {
@@ -54,7 +56,7 @@
     );
   };
 
-  const openLocalFile = async () => {
+  export const openLocalFile = async () => {
     const hasShowOpenFilePicker: boolean = "showOpenFilePicker" in window;
     if (!hasShowOpenFilePicker) throw new Error("This browser doesn't have showOpenFilePicker in window");
     const opts = {
@@ -75,6 +77,8 @@
     insertBody(fileBody);
     saveNewLocalFileToDb(fileTitle, fileBody, fileHandle);
     FileHandler.store(fileHandle);
+    fireToast("ノートを読み込みました！");
+    backToHome();
   };
 
   export const newFileInsertHTML = (element: HTMLElement): void => {
@@ -84,16 +88,12 @@
     if (!newFileNew) throw new Error("newFileNew doesn't exist");
     newFileNew.addEventListener("click", async () => {
       await openBrandNew();
-      fireToast("ノートが作成されました！");
-      backToHome();
     });
     // 「ローカルから読み込む」がクリックされた場合
     const newFileLocal: HTMLElement | null = document.getElementById("newfile_local");
     if (!newFileLocal) throw new Error("newFileLocal doesn't exist");
     newFileLocal.addEventListener("click", async () => {
       await openLocalFile();
-      fireToast("ノートを読み込みました！");
-      backToHome();
     });
   };
 </script>

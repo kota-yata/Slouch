@@ -39,9 +39,7 @@
   });
 </script>
 
-<div class="logo-container">
-  <HeaderLogo />
-</div>
+<HeaderLogo />
 <div class="screen-division-container">
   <div class="left-container screen-division">
     <div class="text-editor-for-memorizing">ようこそ。</div>
@@ -66,10 +64,6 @@
 <style lang="scss">
   @import "../assets/definition.scss";
 
-  .logo-container {
-    position: fixed;
-    padding: 20px 0px 0px 20px;
-  }
   .screen-division-container {
     width: 100vw;
     height: 100vh;

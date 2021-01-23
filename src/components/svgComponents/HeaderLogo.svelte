@@ -4,14 +4,16 @@
   export let height = window.innerWidth > window.innerHeight ? "48px" : "32px";
 </script>
 
-<div class="header-logo-container">
+<header class="header-logo-container" aria-label="ヘッダー">
   <Logo width="{width}" height="{height}" />
-</div>
+</header>
 
 <style lang="scss">
   @import "../../assets/definition.scss";
 
   .header-logo-container {
     @extend %center;
+    position: fixed;
+    padding: 20px 0px 0px 20px;
   }
 </style>
