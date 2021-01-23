@@ -3,9 +3,10 @@
   import firebase from "firebase/app";
   import "firebase/auth";
   import { downloadInsertHTML } from "./fileButtonGroup/Download.svelte";
-  import { overwriteInsertHTML } from "./fileButtonGroup/Overwrite.svelte";
+  import { overwriteInsertHTML, writeToLocal, writeToSlouch } from "./fileButtonGroup/Overwrite.svelte";
   import { newFileInsertHTML } from "./fileButtonGroup/NewFile.svelte";
   import { myNoteInsertHTML } from "./fileButtonGroup/MyNote.svelte";
+  import getEditorPreviewDOM from "../utils/getEditorPreviewDom.js";
 
   interface fileButton {
     icon: string;
@@ -47,6 +48,19 @@
     { icon: "question", words: "ヘルプ", onclick: jumpToHelp },
     { icon: "sign-out-alt", words: "サインアウト", onclick: signOut },
   ];
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "s" && event.metaKey) {
+      event.preventDefault();
+      if (event.shiftKey) {
+        writeToLocal();
+        return;
+      }
+      const DOM = new getEditorPreviewDOM();
+      const dataObj: notesObj = DOM.getAllAsObj();
+      writeToSlouch(dataObj);
+    }
+  });
 </script>
 
 <div class="file-button-container">

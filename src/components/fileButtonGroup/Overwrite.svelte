@@ -29,7 +29,7 @@
     fireToast(`${dataObj.title}を上書きしました`);
   };
 
-  const writeToLocal = async () => {
+  export const writeToLocal = async () => {
     const DOM = new getEditorPreviewDOM();
     const noteBody: string = DOM.getOnlyBody();
     const fileHandle: any = FileHandler.get();
