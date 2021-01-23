@@ -1,47 +1,71 @@
 <script lang="ts" context="module">
   import { commandType } from "../../utils/checkOS.js";
-  import { generateRandomNID, generateFormattedDate, getDbRoot } from "../../utils/dbUtils.js";
+  import FileHandler, { generateRandomNID, generateFormattedDate, getDbRoot } from "../../utils/dbUtils.js";
   import { fireToast } from "../../utils/fireToast.js";
 
-  // SLOUCHノートを上書きする
-  // currentのIDが存在する場合はそのNIDのtitle, date, bodyを更新する
-  export const overwriteSlouchOnclick = (): void => {
-    const overwriteSlouch: HTMLElement | null = document.getElementById("overwrite_slouch");
-    if (!overwriteSlouch) throw new Error("overwriteSlouch button doesn't exist");
-
-    overwriteSlouch.addEventListener("click", async () => {
+  class getDOM {
+    noteContentDom: HTMLInputElement;
+    noteTitleDom: HTMLInputElement;
+    constructor() {
       const noteTitleDom: HTMLInputElement | null = document.getElementById("note_title") as HTMLInputElement;
       if (!noteTitleDom) throw new Error("noteTitleDom doesn't exist");
+      this.noteTitleDom = noteTitleDom;
       const noteContentDom: HTMLInputElement | null = document.getElementById("main_note") as HTMLInputElement;
       if (!noteContentDom) throw new Error("noteContentDom doesn't exist");
-      const dbRoot: dbRoot | null = await getDbRoot();
-      if (!dbRoot) return;
+      this.noteContentDom = noteContentDom;
+    }
+    getAllAsObj() {
       const dataObj: notesObj = {
-        title: noteTitleDom.value,
+        title: this.noteTitleDom.value,
         date: generateFormattedDate(),
-        body: noteContentDom.value,
+        body: this.noteContentDom.value,
       };
-      // currentのIDが空だった場合新しくNIDを発行し、DBに追加する
-      if (!dbRoot.current.exists || !dbRoot.current.data().current) {
-        const randomNID: string = generateRandomNID();
-        dbRoot.uRoot.set(
-          {
-            current: randomNID,
-            [randomNID]: dataObj,
-          },
-          { merge: true },
-        );
-        fireToast(`${noteTitleDom.value}をはじめて保存しました`);
-        return;
-      }
+      return dataObj;
+    }
+    getOnlyBody() {
+      return this.noteContentDom.value;
+    }
+    getOnlyTitle() {
+      return this.noteTitleDom.value;
+    }
+  }
+
+  // SLOUCHノートを上書きする
+  const writeToSlouch = async () => {
+    const dbRoot: dbRoot = await getDbRoot();
+    const DOM = new getDOM();
+    const dataObj: notesObj = DOM.getAllAsObj();
+    // currentのIDが空だった場合新しくNIDを発行し、DBに追加する
+    if (!dbRoot.current.exists || !dbRoot.current.data().current) {
+      const randomNID: string = generateRandomNID();
       dbRoot.uRoot.set(
         {
-          [dbRoot.current.data().current]: dataObj,
+          current: randomNID,
+          [randomNID]: dataObj,
         },
         { merge: true },
       );
-      fireToast(`${noteTitleDom.value}を上書きしました`);
-    });
+      fireToast(`${dataObj.title}をはじめて保存しました`);
+      return;
+    }
+    dbRoot.uRoot.set(
+      {
+        [dbRoot.current.data().current]: dataObj,
+      },
+      { merge: true },
+    );
+    fireToast(`${dataObj.title}を上書きしました`);
+  };
+
+  const writeToLocal = async () => {
+    const DOM = new getDOM();
+    const noteBody: string = DOM.getOnlyBody();
+    const fileHandle: any = FileHandler.get();
+    const writable: any = await fileHandle.createWritable();
+    await writable.write(noteBody);
+    await writable.close();
+    const noteTitle: string = DOM.getOnlyTitle();
+    fireToast(`${noteTitle}をローカルに保存しました`);
   };
 
   const html: string = `
@@ -54,5 +78,19 @@
 
   export const overwriteInsertHTML = (element: HTMLElement): void => {
     element.insertAdjacentHTML("beforeend", html);
+    // 「SLOUCHノートを上書き」がクリックされた場合
+    const overwriteSlouch: HTMLElement | null = document.getElementById("overwrite_slouch");
+    if (!overwriteSlouch) throw new Error("overwriteSlouch button doesn't exist");
+
+    overwriteSlouch.addEventListener("click", async () => {
+      await writeToSlouch();
+    });
+    // 「ローカルを上書き」がクリックされた場合
+    const overwriteLocal: HTMLElement | null = document.getElementById("overwrite_local");
+    if (!overwriteLocal) throw new Error("overwriteLocal button doesn't exist");
+
+    overwriteLocal.addEventListener("click", () => {
+      writeToLocal();
+    });
   };
 </script>

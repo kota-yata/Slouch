@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-  import { getDbRoot } from "../../utils/dbUtils.js";
+  import FileHandler, { getDbRoot } from "../../utils/dbUtils.js";
   import { fireToast } from "../../utils/fireToast.js";
   import { parseElement } from "../CenterNote.svelte";
 
@@ -60,13 +60,15 @@
   };
 
   const saveFileHandle = async (fileHandle: any) => {
-    const dbRoot: dbRoot | null = await getDbRoot();
+    // FileHandleをDBに保存する方法が見つかるまではクラスでセッション内のみFileHandleを保存できるようにする
+    /*const dbRoot: dbRoot | null = await getDbRoot();
     if (!dbRoot) return;
     const currentNoteID: any = dbRoot.current.data().current;
     if (!currentNoteID) return;
     dbRoot.uRoot.doc(currentNoteID).update({
-      fileHandle: "fileHandle",
-    });
+      fileHandle: fileHandle,
+    });*/
+    FileHandler.store(fileHandle);
   };
 
   interface typeDocumentContent {

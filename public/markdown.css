@@ -12,8 +12,8 @@
 .preview-note *+h1::before, .preview-note *+h2::before, .preview-note *+h3::before,.preview-note *+h4::before,.preview-note *+h5::before, .preview-note *+h6::before {
   display: block;
   content: " ";
-  margin-top: -60px;
-  height: 60px;
+  margin-top: -40px;
+  height: 40px;
   visibility: hidden;
   pointer-events: none;
 }

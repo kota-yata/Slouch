@@ -1,6 +1,7 @@
 <script lang="ts" context="module">
   import { commandType } from "../../utils/checkOS.js";
   import { insertTitle, insertBody, getDbRoot, generateRandomNID, generateFormattedDate } from "../../utils/dbUtils.js";
+  import FileHandler from "../../utils/dbUtils.js";
   import firebase from "firebase/app";
   import "firebase/firestore";
   import { fireToast } from "../../utils/fireToast.js";
@@ -22,6 +23,7 @@
     dbRoot.uRoot.update({
       current: firebase.firestore.FieldValue.delete(),
     });
+    FileHandler.remove();
   };
 
   const saveNewLocalFileToDb = async (title: string, body: string, fileHandle: any) => {
@@ -62,6 +64,7 @@
     insertTitle(fileTitle);
     insertBody(fileBody);
     saveNewLocalFileToDb(fileTitle, fileBody, fileHandle);
+    FileHandler.store(fileHandle);
   };
 
   export const newFileInsertHTML = (element: HTMLElement): void => {

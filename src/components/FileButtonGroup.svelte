@@ -3,7 +3,7 @@
   import firebase from "firebase/app";
   import "firebase/auth";
   import { downloadInsertHTML } from "./fileButtonGroup/Download.svelte";
-  import { overwriteInsertHTML, overwriteSlouchOnclick } from "./fileButtonGroup/Overwrite.svelte";
+  import { overwriteInsertHTML } from "./fileButtonGroup/Overwrite.svelte";
   import { newFileInsertHTML } from "./fileButtonGroup/NewFile.svelte";
   import { myNoteInsertHTML } from "./fileButtonGroup/MyNote.svelte";
 
@@ -31,10 +31,7 @@
     const toBeInserted: HTMLElement | null = document.getElementById("to_be_inserted");
     if (!toBeInserted) throw new Error("toBeInserted div doesn't exist");
     if (icon === "download") downloadInsertHTML(toBeInserted);
-    if (icon === "save") {
-      overwriteInsertHTML(toBeInserted);
-      overwriteSlouchOnclick();
-    }
+    if (icon === "save") overwriteInsertHTML(toBeInserted);
     if (icon === "plus") newFileInsertHTML(toBeInserted);
     if (icon === "user-circle") myNoteInsertHTML(toBeInserted);
   };

@@ -1,8 +1,9 @@
 <script lang="ts" context="module">
   import { backToHome } from "../../utils/backToHome.js";
 
-  import { getDbRoot, insertTitle, insertBody } from "../../utils/dbUtils.js";
+  import FileHandler, { getDbRoot, insertTitle, insertBody } from "../../utils/dbUtils.js";
   import { fireToast } from "../../utils/fireToast.js";
+  import { parseElement } from "../CenterNote.svelte";
 
   // ノート一つ一つのタイトルと最終更新日のDOMを生成する
   const generateHTML = (nid: string, title: string, date: string): string => {
@@ -46,6 +47,8 @@
     );
     insertTitle(title);
     insertBody(body);
+    parseElement();
+    FileHandler.remove();
     fireToast(`${title}を表示中です`);
     backToHome();
   };

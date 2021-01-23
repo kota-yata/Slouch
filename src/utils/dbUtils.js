@@ -60,3 +60,16 @@ export const insertBody = (body) => {
   mainNote.value = body;
   console.log("--- Firebase mynote body is inserted to editor textarea ---");
 };
+
+export default class FileHandler {
+  static store(fileHandle) {
+    this.fileHandle = fileHandle;
+  }
+  static get() {
+    if (!this.fileHandle) throw new Error("There is no fileHandle on this session");
+    return this.fileHandle;
+  }
+  static remove() {
+    this.fileHandle = null;
+  }
+}
