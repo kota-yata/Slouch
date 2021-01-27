@@ -16,4 +16,10 @@
     position: fixed;
     padding: 20px 0px 0px 20px;
   }
+  @media (max-aspect-ratio: 1/1) {
+    .header-logo-container {
+      position: relative;
+      padding: 20px 0;
+    }
+  }
 </style>

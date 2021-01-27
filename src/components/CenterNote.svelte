@@ -82,11 +82,12 @@
 <style lang="scss">
   @import "../assets/definition.scss";
   $mobile-padding: 2vh;
-  $mobile-width: calc(80vw - #{$mobile-padding}* 2);
-  $mobile-height: calc(80vw / #{$A4RATIO} - #{$mobile-padding}* 2);
+  $mobile-width: calc(90vw - #{$mobile-padding}* 2);
+  $mobile-height: calc(100% - #{$mobile-padding}* 2);
 
   .center-content {
     width: $center-note-width;
+    max-width: 55vw;
     height: $center-note-height;
     position: absolute;
     top: calc(
@@ -117,17 +118,19 @@
   @media (max-aspect-ratio: 1/1) {
     .center-content {
       top: 0;
-      left: calc(50% - 80vw / 2);
+      left: calc(50% - 90vw / 2);
       width: $mobile-width;
+      max-width: $mobile-width;
       height: $mobile-height;
-      max-height: calc(100vh - 76px - 25vh - #{$mobile-padding}* 2);
+      max-height: calc(100vh - 96px - 25vh - #{$mobile-padding}* 2);
       padding: $mobile-padding;
+      border-radius: 10px;
     }
   }
 
   @media screen and (max-width: 700px) and (max-aspect-ratio: 4/7) {
     .center-content {
-      height: calc(100vh - 76px - 25vh - #{$mobile-padding}* 2 - 4vh);
+      height: calc(100vh - 96px - 25vh - #{$mobile-padding}* 2 - 4vh);
       min-height: $mobile-height;
     }
   }

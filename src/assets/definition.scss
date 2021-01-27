@@ -10,7 +10,7 @@ $complete-white: #fafafa;
 
 // サイズの変数
 $left-card-height: 60vh;
-$A4RATIO: 1 / 1.414;
+$A4RATIO: 1 / 1.3;
 $slouch-border: 4px $general-white solid;
 $center-note-height: 80vh;
 $center-note-width: calc(#{$center-note-height} * #{$A4RATIO});

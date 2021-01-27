@@ -1,9 +1,10 @@
 <script lang="ts">
   export let width: string = "20vw";
   export let height: string = "60vh";
+  export let id: string = "";
 </script>
 
-<div class="side-card" style="width:{width}; height:{height};">
+<div class="side-card" id="{id}" style="width:{width}; height:{height};">
   <slot name="content">No content</slot>
 </div>
 

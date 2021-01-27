@@ -5,6 +5,13 @@
   import { fireToast } from "../../utils/fireToast.js";
   import { parseElement } from "../CenterNote.svelte";
 
+  const myNoteOnContextMenu = (): boolean => {
+    const contextMenuHTML: string = `
+      <div>a</div>
+    `;
+    return false;
+  };
+
   // ノート一つ一つのタイトルと最終更新日のDOMを生成する
   const generateHTML = (nid: string, title: string, date: string): string => {
     // <div class="mynote-delete"><button id="delete_${nid}"><i class="fas fa-trash"></i></button></div>

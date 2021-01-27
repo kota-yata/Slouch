@@ -16,7 +16,7 @@
 
   const isLandScape: boolean = window.innerWidth > window.innerHeight;
   const cardWidth: string = isLandScape ? "20vw" : "80vw";
-  const cardHeight: string = isLandScape ? "60vh" : "23vh";
+  const cardHeight: string = isLandScape ? "60vh" : "15vh";
 
   firebase.auth().onAuthStateChanged((user: any): any => {
     if (!user) return push("/signin");
@@ -45,9 +45,20 @@
     if (!toBeInserted) throw new Error("toBeInserted div doesn't exist");
     toBeInserted.textContent = "";
   };
+
+  const toggleRightCard = (): void => {
+    const rightCard: Element | null = document.getElementsByClassName("right-card")[1];
+    if (!rightCard) throw new Error("rightCard doesn't exist");
+    rightCard.classList.toggle("right-card-visible");
+  };
 </script>
 
 <HeaderLogo />
+{#if !isLandScape}
+  <div class="humburger-container">
+    <button class="humburger-button" on:click="{toggleRightCard}"><i class="fas fa-sliders-h"></i></button>
+  </div>
+{/if}
 <div class="toast-container">
   <Toast />
 </div>
@@ -74,11 +85,11 @@
   <CenterNote />
 </div>
 <div class="left-card side-card">
-  <SideCard width="{cardWidth}" height="{cardHeight}">
+  <SideCard id="left_card" width="{cardWidth}" height="{cardHeight}">
     <div class="content" slot="content">
       <EditorButtonGroup />
-      <CountGroup />
       {#if isLandScape}
+        <CountGroup />
         <ComingSoon />
       {/if}
     </div>
@@ -88,9 +99,14 @@
 <style lang="scss">
   @import "../assets/definition.scss";
 
-  .header-container {
+  .humburger-container {
     position: fixed;
-    padding: 20px 0px 0px 20px;
+    top: 2.5vh;
+    right: 3vh;
+    .humburger-button {
+      color: $slouch-green;
+      font-size: 23px;
+    }
   }
   .side-card {
     position: fixed;
@@ -125,6 +141,7 @@
   .right-card {
     z-index: 5;
     right: 2vw;
+    transition: 0.3s;
   }
   #to_be_inserted {
     @extend %center;
@@ -133,15 +150,10 @@
   }
 
   @media (max-aspect-ratio: 1/1) {
-    .header-container {
-      width: 100vw;
-      padding: 10px 0;
-      position: relative;
-    }
     .left-card {
       position: relative;
-      height: 23vh;
-      padding: 1vh 0;
+      height: 15vh;
+      padding: 3vh 0 1vh 0;
       display: flex;
       justify-content: center;
       left: auto;
@@ -152,7 +164,7 @@
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-        height: 23vh;
+        height: 15vh;
       }
     }
     .right-card {
@@ -163,12 +175,6 @@
       position: relative;
       width: 100vw;
       height: calc(100vh - 76px - 25vh);
-    }
-  }
-
-  @media screen and (max-width: 700px) and (max-aspect-ratio: 4/7) {
-    .header-container {
-      padding: 15px 0px;
     }
   }
 </style>

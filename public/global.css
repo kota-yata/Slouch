@@ -111,6 +111,11 @@ button {
   position: absolute;
 }
 
+.right-card-visible {
+  right: 10px !important;
+  transition: 0.3s;
+}
+
 .toast-visible {
   visibility: visible !important;
   animation-duration: 3s;
@@ -137,5 +142,12 @@ button {
   100% {
     visibility: hidden;
     opacity: 0;
+  }
+}
+
+@media (max-aspect-ratio: 1/1) {
+  #left_card {
+    background: transparent;
+    box-shadow: none;
   }
 }
