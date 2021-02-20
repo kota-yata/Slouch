@@ -1,54 +1,76 @@
 <script lang="ts">
-  import { parseElement, changeAppearance } from "./CenterNote.svelte";
+  import { ParsingMD } from "./CenterNote.svelte";
 
+  class EditorButtons {
+    editButton: HTMLElement;
+    previewButton: HTMLElement;
+
+    constructor(editElement: HTMLElement, previewElement: HTMLElement) {
+      this.editButton = editElement;
+      this.previewButton = previewElement;
+      console.log("--- Got previewButton and EditorButton ---");
+    }
+
+    changeAppearanceToEditor() {
+      triggerAntinomyButtons(this.editButton, this.previewButton);
+      ParsingMD.changeAppearance(0);
+    }
+
+    changeAppearanceToPreview() {
+      triggerAntinomyButtons(this.previewButton, this.editButton);
+      ParsingMD.parseElement();
+      ParsingMD.changeAppearance(1);
+    }
+
+    emulateClicking() {
+      if (this.editButton.hasAttribute("disabled")) return this.previewButton.click();
+      return this.editButton.click();
+    }
+  }
+
+  // クラスのインスタンスをグローバルに生成する
+  let editorButtonsGlobal: EditorButtons;
   window.addEventListener("DOMContentLoaded", (): void => {
-    // 初期画面はエディターなのでタイトルもEditorにしておく
-    document.title = "SLOUCH - Editor";
-    // 二つのボタンを取得してnullだったら返しておく
-    const editButton: HTMLElement | null = document.getElementById("Editor");
-    if (!editButton) throw "editButton is null";
-    const previewButton: HTMLElement | null = document.getElementById("Preview");
-    if (!previewButton) throw "previewButton is null.";
-
-    // エディターボタンがクリックされた時
-    editButton.addEventListener("click", () => {
-      triggerAntinomyButtons(editButton, previewButton);
-      changeAppearance(0);
-    });
-
-    // プレビューボタンがクリックされた時
-    previewButton.addEventListener("click", () => {
-      triggerAntinomyButtons(previewButton, editButton);
-      parseElement();
-      changeAppearance(1);
-    });
-
-    // エディターとプレビューを切り替えるキーボードショートカット
-    window.addEventListener("keydown", (event) => {
-      if (event.key === "e" && event.ctrlKey) {
-        if (editButton.hasAttribute("disabled")) return previewButton.click();
-        return editButton.click();
-      }
-    });
+    const editElement: HTMLElement | null = document.getElementById("Editor");
+    if (!editElement) throw new Error("editButton is null");
+    const previewElement: HTMLElement | null = document.getElementById("Preview");
+    if (!previewElement) throw new Error("previewButton is null.");
+    editorButtonsGlobal = new EditorButtons(editElement, previewElement);
   });
 
+  const editorButtonOnclick = (): void => {
+    editorButtonsGlobal.changeAppearanceToEditor();
+  };
+  const previewButtonOnclick = (): void => {
+    editorButtonsGlobal.changeAppearanceToPreview();
+  };
+
   // 押されたボタンをdisabledにして他方のdisabledを削除する
-  // disabledにしないと、すでに押してある方を押した際の無駄な条件分岐が発生する
-  // disabledにすることでSCSSの指定が楽になると言うメリットもある
   const triggerAntinomyButtons = (clicked: HTMLElement, another: HTMLElement): void => {
     clicked.setAttribute("disabled", "true");
     // 押されたボタンのIDを取得してタイトルにぶち込む
     const idName: string | null = clicked.getAttribute("id");
-    if (!idName) throw "idName is null";
+    if (!idName) throw new Error("idName is null");
     document.title = `SLOUCH - ${idName}`;
     // 他方のボタンがdisabledだったらそれを削除する
     if (another.hasAttribute("disabled")) another.removeAttribute("disabled");
   };
+
+  // エディターとプレビューを切り替えるキーボードショートカット
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "e" && event.ctrlKey) {
+      editorButtonsGlobal.emulateClicking();
+    }
+  });
 </script>
 
 <div class="editor-button-group">
-  <button class="editor-button" id="Preview" data-tooltip="Ctrl + E"><i class="fas fa-eye"></i></button>
-  <button class="editor-button" id="Editor" data-tooltip="Ctrl + E" disabled><i class="fas fa-pencil-alt"></i></button>
+  <button class="editor-button" id="Preview" data-tooltip="Ctrl + E" on:click="{previewButtonOnclick}"><i
+      class="fas fa-eye"
+    ></i></button>
+  <button class="editor-button" id="Editor" data-tooltip="Ctrl + E" on:click="{editorButtonOnclick}" disabled><i
+      class="fas fa-pencil-alt"
+    ></i></button>
 </div>
 
 <style lang="scss">

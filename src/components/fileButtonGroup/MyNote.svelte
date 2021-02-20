@@ -3,7 +3,7 @@
 
   import FileHandler, { getDbRoot, insertTitle, insertBody } from "../../utils/dbUtils.js";
   import { fireToast } from "../../utils/fireToast.js";
-  import { parseElement } from "../CenterNote.svelte";
+  import { ParsingMD } from "../CenterNote.svelte";
 
   const myNoteOnContextMenu = (): boolean => {
     const contextMenuHTML: string = `
@@ -54,7 +54,7 @@
     );
     insertTitle(title);
     insertBody(body);
-    parseElement();
+    ParsingMD.parseElement();
     FileHandler.remove();
     fireToast(`${title}を表示中です`);
     backToHome();
