@@ -1,4 +1,4 @@
-<div class="rightcard-copyright"><span>© 2021 SLOUCH</span></div>
+<div class="rightcard-copyright"><span>© 2021 Kota Yatagai</span></div>
 
 <style lang="scss">
   @import "../assets/definition.scss";
