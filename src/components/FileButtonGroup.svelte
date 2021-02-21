@@ -6,7 +6,7 @@
   import { overwriteInsertHTML, writeToLocal, writeToSlouch } from "./fileButtonGroup/Overwrite.svelte";
   import { newFileInsertHTML, openBrandNew, openLocalFile } from "./fileButtonGroup/NewFile.svelte";
   import { myNoteInsertHTML } from "./fileButtonGroup/MyNote.svelte";
-  import getEditorPreviewDOM from "../utils/getEditorPreviewDom.js";
+  import { getEditorPreviewDOM } from "../utils/getEditorPreviewDom.svelte";
 
   interface fileButton {
     icon: string;
@@ -27,8 +27,6 @@
     if (!toolCard) throw new Error("Tool card doesn't exist");
     toolCard.classList.add("visible");
     toolCard.style.zIndex = "7";
-    const uid: string | null = sessionStorage.getItem("uid");
-    if (!uid) throw new Error("uid doesn't exist in sessionStorage");
     const toBeInserted: HTMLElement | null = document.getElementById("to_be_inserted");
     if (!toBeInserted) throw new Error("toBeInserted div doesn't exist");
     if (icon === "download") downloadInsertHTML(toBeInserted);
@@ -36,6 +34,7 @@
     if (icon === "plus") newFileInsertHTML(toBeInserted);
     if (icon === "user-circle") myNoteInsertHTML(toBeInserted);
   };
+  // 現在は使われてない
   const jumpToHelp = (): void => {
     window.open("#/help");
   };

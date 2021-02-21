@@ -7,7 +7,7 @@
     generateRandomNID,
     generateFormattedDate,
   } from "../../utils/dbUtils.svelte";
-  import getEditorPreviewDOM from "../../utils/getEditorPreviewDom.js";
+  import { getEditorPreviewDOM } from "../../utils/getEditorPreviewDom.svelte";
   import { FileHandler } from "../../utils/dbUtils.svelte";
   import firebase from "firebase/app";
   import "firebase/firestore";

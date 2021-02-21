@@ -21,7 +21,7 @@
   firebase.auth().onAuthStateChanged((user: any): any => {
     if (!user) return push("/signin");
     sessionStorage.setItem("uid", user.uid);
-    console.log("--- Firebase user is detected && uid is registered to session storage ---");
+    console.log("--- Firebase user is detected ---");
   });
 
   let titleValue: string = "無題のノート";

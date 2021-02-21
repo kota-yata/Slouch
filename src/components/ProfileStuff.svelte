@@ -1,6 +1,6 @@
 <script lang="ts">
   import { generateRandomNID, getDbRoot } from "../utils/dbUtils.svelte";
-  import getEditorPreviewDOM from "../utils/getEditorPreviewDom";
+  import { getEditorPreviewDOM } from "../utils/getEditorPreviewDom.svelte";
   import { fireToast } from "./Toast.svelte";
   export let titleValue: string = "無題のノート";
 

@@ -33,7 +33,7 @@
 
   // ログイン中のユーザーのコレクションを取得する
   export const getDbRoot = async (): Promise<dbRoot> => {
-    const uid = sessionStorage.getItem("uid");
+    const uid: string | null = sessionStorage.getItem("uid");
     const database: any = firebase.firestore();
     let uRoot: any = database.collection("users").doc(uid);
     let current: any = await uRoot.get();

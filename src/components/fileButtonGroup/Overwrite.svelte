@@ -1,7 +1,7 @@
 <script lang="ts" context="module">
   import { commandType } from "../../utils/checkOS.js";
   import { FileHandler, generateRandomNID, generateFormattedDate, getDbRoot } from "../../utils/dbUtils.svelte";
-  import getEditorPreviewDOM from "../../utils/getEditorPreviewDom.js";
+  import { getEditorPreviewDOM } from "../../utils/getEditorPreviewDom.svelte";
   import { fireToast } from "../Toast.svelte";
 
   // SLOUCHノートを上書きする
