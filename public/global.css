@@ -73,7 +73,10 @@ button {
   max-width: 200px;
 }
 .overwrite-a {
-  margin-top: 20px;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #66d17f;
+  font-family: "inter","nsjp";
 }
 .mynote-sentence {
   margin: 0 auto;
@@ -81,6 +84,9 @@ button {
 }
 .mynote-container {
   position: relative;
+  width: 100%;
+}
+.mynote-button {
   text-align: left;
   width: 80%;
   margin: 0 auto;
@@ -90,7 +96,7 @@ button {
   border-bottom: 4px #f5f5f5 solid;
   transition: 0.1s;
 }
-.mynote-container:hover {
+.mynote-button:hover {
   background: #f5f5f5;
   transition: 0.1s;
 }
@@ -109,6 +115,19 @@ button {
 }
 .mynote-delete {
   position: absolute;
+  right: 15%;
+  top: 10px;
+  color: #fafafa;
+  font-size: 15px;
+  transition: 0.1s;
+  border-radius: 50%;
+  background: #66d17f;
+  width: 30px;
+  height: 30px;
+}
+.mynote-delete:hover {
+  background: #d30505;
+  transition: 0.1s;
 }
 
 .right-card-visible {

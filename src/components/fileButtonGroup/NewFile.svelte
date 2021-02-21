@@ -1,25 +1,29 @@
 <script lang="ts" context="module">
   import { commandType } from "../../utils/checkOS.js";
-  import { insertTitle, insertBody, getDbRoot, generateRandomNID, generateFormattedDate } from "../../utils/dbUtils.js";
+  import {
+    insertTitle,
+    insertBody,
+    getDbRoot,
+    generateRandomNID,
+    generateFormattedDate,
+  } from "../../utils/dbUtils.svelte";
   import getEditorPreviewDOM from "../../utils/getEditorPreviewDom.js";
-  import FileHandler from "../../utils/dbUtils.js";
+  import { FileHandler } from "../../utils/dbUtils.svelte";
   import firebase from "firebase/app";
   import "firebase/firestore";
-  import { fireToast } from "../../utils/fireToast.js";
+  import { fireToast } from "../Toast.svelte";
   import { backToHome } from "../../utils/backToHome.js";
   import { writeToSlouch } from "../fileButtonGroup/Overwrite.svelte";
 
   const html: string = `
   <div class="container">\
     <span class="file-sentence">作成方法を選ぶ</span>\
-    <button class="file-button-button overwrite-button" id="newfile_new" data-tooltip="${commandType} + N">あたらしく作る</button>\
+    <button class="file-button-button overwrite-button" id="newfile_new" data-tooltip="${commandType} + B">あたらしく作る</button>\
     <button class="file-button-button overwrite-button" id="newfile_local" data-tooltip="${commandType} + I">ローカルから読み込む</button>\
-    <a href="#/help" class="overwrite-a">なにが違うの?</a>\
   </div>`;
 
   const saveCurrentNoteBeforeClear = (): void => {
-    const DOM = new getEditorPreviewDOM();
-    const dataObj: notesObj = DOM.getAllAsObj();
+    const dataObj: notesObj = getEditorPreviewDOM.getAllAsObj();
     if (dataObj.body === "") return console.log("Since content body is empty, this note wasn't stored to DB.");
     writeToSlouch(dataObj);
   };

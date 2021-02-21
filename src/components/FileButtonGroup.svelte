@@ -45,30 +45,31 @@
     { icon: "plus", words: "新規作成", onclick: toggleToolCard },
     { icon: "save", words: "上書き保存", onclick: toggleToolCard },
     { icon: "download", words: "ダウンロード", onclick: toggleToolCard },
-    { icon: "question", words: "ヘルプ", onclick: jumpToHelp },
+    // { icon: "question", words: "ヘルプ", onclick: jumpToHelp },
     { icon: "sign-out-alt", words: "サインアウト", onclick: signOut },
   ];
 
   // ショートカットキーを割り当てる
   window.addEventListener("keydown", (event) => {
-    event.preventDefault();
     // 上書き
     if (event.key === "s" && event.metaKey) {
+      event.preventDefault();
       // シフトも押されてたらローカルファイルを上書き
       if (event.shiftKey) {
         writeToLocal();
         return;
       }
-      const DOM = new getEditorPreviewDOM();
-      const dataObj: notesObj = DOM.getAllAsObj();
+      const dataObj: notesObj = getEditorPreviewDOM.getAllAsObj();
       writeToSlouch(dataObj);
     }
     // 新規ノート作成
-    if (event.key === "n" && event.metaKey) {
+    if (event.key === "b" && event.metaKey) {
+      event.preventDefault();
       openBrandNew();
     }
     // ローカルファイルを読み込む
-    if (event.key === "n" && event.metaKey) {
+    if (event.key === "i" && event.metaKey) {
+      event.preventDefault();
       openLocalFile();
     }
   });

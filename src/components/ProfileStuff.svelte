@@ -1,12 +1,25 @@
 <script lang="ts">
-  import { getDbRoot } from "../utils/dbUtils";
-  import { fireToast } from "../utils/fireToast";
+  import { generateRandomNID, getDbRoot } from "../utils/dbUtils.svelte";
+  import getEditorPreviewDOM from "../utils/getEditorPreviewDom";
+  import { fireToast } from "./Toast.svelte";
   export let titleValue: string = "無題のノート";
 
   const saveTitle = async (titleValue: string) => {
     const dbRoot: dbRoot = await getDbRoot();
     const currentNote: any = dbRoot.current.data().current;
-    if (!currentNote) return;
+    if (!currentNote) {
+      const randomNID: string = generateRandomNID();
+      const dataObj: notesObj = getEditorPreviewDOM.getAllAsObj();
+      dbRoot.uRoot.set(
+        {
+          current: randomNID,
+          [randomNID]: dataObj,
+        },
+        { merge: true },
+      );
+      fireToast(`${dataObj.title}をはじめて保存しました`);
+      return;
+    }
     dbRoot.uRoot.update({
       [`${currentNote}.title`]: titleValue,
     });

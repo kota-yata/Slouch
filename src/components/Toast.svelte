@@ -1,4 +1,19 @@
-<script lang="ts">
+<script lang="ts" context="module">
+  type warningOrNot = "warning" | "";
+  export const fireToast = (message: string, warning: warningOrNot = ""): void => {
+    const toast: HTMLElement | null = document.getElementById("toast");
+    if (!toast) throw new Error("toast doesn't exist");
+    const toastWords: HTMLElement | null = document.getElementById("toast_words");
+    if (!toastWords) throw new Error("toastWords doesn't exist");
+    toastWords.innerText = message;
+    if (warning === "warning") toast.style.backgroundColor = "#bf0000";
+    if (warning === "") toast.style.backgroundColor = "#66d17f";
+    toast.classList.add("toast-visible");
+    const removeClass = (): void => {
+      toast.classList.remove("toast-visible");
+    };
+    setTimeout(removeClass, 2750);
+  };
 </script>
 
 <div class="toast" id="toast">

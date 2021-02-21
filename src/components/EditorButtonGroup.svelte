@@ -64,6 +64,10 @@
   });
 </script>
 
+<svelte:head>
+  <title>SLOUCH - Editor</title>
+</svelte:head>
+
 <div class="editor-button-group">
   <button class="editor-button" id="Preview" data-tooltip="Ctrl + E" on:click="{previewButtonOnclick}"><i
       class="fas fa-eye"

@@ -7,11 +7,11 @@
 
   export class ParsingMD {
     static typeArray: HTMLElement[];
-    static mainNote: HTMLInputElement;
+    static mainNote: HTMLTextAreaElement;
     static previewNote: HTMLElement;
 
     static getNoteDom() {
-      const mainNote: HTMLInputElement | null = document.getElementById("main_note") as HTMLInputElement;
+      const mainNote: HTMLTextAreaElement | null = document.getElementById("main_note") as HTMLTextAreaElement;
       if (!mainNote) throw new Error("mainNote is null");
       this.mainNote = mainNote;
       const previewNote: HTMLElement | null = document.getElementById("preview_note");

@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
-  import FileHandler, { getDbRoot } from "../../utils/dbUtils.js";
-  import { fireToast } from "../../utils/fireToast.js";
+  import { FileHandler, getDbRoot } from "../../utils/dbUtils.svelte";
+  import { fireToast } from "../Toast.svelte";
   import { ParsingMD } from "../CenterNote.svelte";
 
   const html: string =

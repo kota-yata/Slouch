@@ -1,9 +1,9 @@
 "use strict";
 
-import { generateFormattedDate } from "./dbUtils.js";
+import { generateFormattedDate } from "./dbUtils.svelte";
 
 export default class getEditorPreviewDOM {
-  constructor() {
+  static initialize() {
     const noteTitleDom = document.getElementById("note_title");
     if (!noteTitleDom) throw new Error("noteTitleDom doesn't exist");
     this.noteTitleDom = noteTitleDom;
@@ -11,7 +11,7 @@ export default class getEditorPreviewDOM {
     if (!noteContentDom) throw new Error("noteContentDom doesn't exist");
     this.noteContentDom = noteContentDom;
   }
-  getAllAsObj() {
+  static getAllAsObj() {
     const dataObj = {
       title: this.noteTitleDom.value,
       date: generateFormattedDate(),
@@ -19,10 +19,14 @@ export default class getEditorPreviewDOM {
     };
     return dataObj;
   }
-  getOnlyBody() {
+  static getOnlyBody() {
     return this.noteContentDom.value;
   }
-  getOnlyTitle() {
+  static getOnlyTitle() {
     return this.noteTitleDom.value;
   }
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+  getEditorPreviewDOM.initialize();
+});

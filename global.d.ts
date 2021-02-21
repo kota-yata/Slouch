@@ -10,7 +10,6 @@ interface notesObj {
   title: string;
   date: string;
   body: string;
-  fileHandle?: string;
 }
 
 interface dbRoot {

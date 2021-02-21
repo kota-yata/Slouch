@@ -11,7 +11,7 @@
   import firebase from "firebase/app";
   import "firebase/auth";
   import { push } from "svelte-spa-router";
-  import { getDbRoot, insertBody } from "../utils/dbUtils.js";
+  import { getDbRoot, insertBody } from "../utils/dbUtils.svelte";
   import Toast from "../components/Toast.svelte";
 
   const isLandScape: boolean = window.innerWidth > window.innerHeight;
@@ -29,7 +29,7 @@
   window.addEventListener("DOMContentLoaded", async () => {
     console.log("--- DOM contents are loaded ---");
     const dbRoot: dbRoot = await getDbRoot();
-    if (!dbRoot) return;
+    if (!dbRoot.current) return;
     const currentNote: any = dbRoot.current.data().current;
     if (!currentNote) return;
     titleValue = dbRoot.current.data()[currentNote].title;
@@ -47,8 +47,11 @@
   };
 
   const toggleRightCard = (): void => {
+    const rightToolCard: Element | null = document.getElementsByClassName("right-card")[0];
+    if (!rightToolCard) throw new Error("rightToolCard doesn't exist");
     const rightCard: Element | null = document.getElementsByClassName("right-card")[1];
     if (!rightCard) throw new Error("rightCard doesn't exist");
+    rightToolCard.classList.toggle("right-card-visible");
     rightCard.classList.toggle("right-card-visible");
   };
 </script>
