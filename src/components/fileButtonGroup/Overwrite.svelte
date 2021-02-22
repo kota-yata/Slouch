@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-  import { commandType } from "../../utils/checkOS.js";
+  import { commandType } from "../../utils/checkOS.svelte";
   import { FileHandler, generateRandomNID, generateFormattedDate, getDbRoot } from "../../utils/dbUtils.svelte";
   import { getEditorPreviewDOM } from "../../utils/getEditorPreviewDom.svelte";
   import { fireToast } from "../Toast.svelte";

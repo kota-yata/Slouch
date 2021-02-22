@@ -1,5 +1,5 @@
 <script lang="ts" context="module">
-  import { commandType } from "../../utils/checkOS.js";
+  import { commandType } from "../../utils/checkOS.svelte";
   import {
     insertTitle,
     insertBody,

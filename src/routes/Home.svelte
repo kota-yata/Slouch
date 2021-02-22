@@ -12,7 +12,8 @@
   import "firebase/auth";
   import { push } from "svelte-spa-router";
   import { getDbRoot, insertBody } from "../utils/dbUtils.svelte";
-  import Toast from "../components/Toast.svelte";
+  import Toast, { fireToast } from "../components/Toast.svelte";
+  import { getBrowser } from "../utils/checkOS.svelte";
 
   const isLandScape: boolean = window.innerWidth > window.innerHeight;
   const cardWidth: string = isLandScape ? "20vw" : "80vw";
@@ -35,7 +36,14 @@
     titleValue = dbRoot.current.data()[currentNote].title;
     const currentNoteBody: string = dbRoot.current.data()[currentNote].body;
     insertBody(currentNoteBody);
+    alertForFirefox();
   });
+
+  const alertForFirefox = (): void => {
+    const isFirefox = getBrowser() === "Firefox";
+    if (!isFirefox) return;
+    fireToast("お使いのブラウザではエディターがうまく機能しない可能性があります", "message");
+  };
 
   const backSideCard = (): void => {
     const toolCard: HTMLElement | null = document.getElementById("tool_card");
