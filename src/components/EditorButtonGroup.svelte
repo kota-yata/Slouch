@@ -1,5 +1,6 @@
 <script lang="ts">
   import { ParsingMD } from "./CenterNote.svelte";
+  import { onMount } from "svelte";
 
   class EditorButtons {
     editButton: HTMLElement;
@@ -30,7 +31,7 @@
 
   // クラスのインスタンスをグローバルに生成する
   let editorButtonsGlobal: EditorButtons;
-  window.addEventListener("DOMContentLoaded", (): void => {
+  onMount(() => {
     const editElement: HTMLElement | null = document.getElementById("Editor");
     if (!editElement) throw new Error("editButton is null");
     const previewElement: HTMLElement | null = document.getElementById("Preview");

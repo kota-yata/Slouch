@@ -2,7 +2,7 @@
   import ComingSoon from "../components/ComingSoon.svelte";
   import CountGroup from "../components/CountGroup.svelte";
   import HeaderLogo from "../components/svgComponents/HeaderLogo.svelte";
-  import CenterNote from "../components/CenterNote.svelte";
+  import CenterNote, { ParsingMD } from "../components/CenterNote.svelte";
   import ProfileStuff from "../components/ProfileStuff.svelte";
   import SideCard from "../components/SideCard.svelte";
   import FileButtonGroup from "../components/FileButtonGroup.svelte";
@@ -14,6 +14,8 @@
   import { getDbRoot, insertBody } from "../utils/dbUtils.svelte";
   import Toast, { fireToast } from "../components/Toast.svelte";
   import { getBrowser } from "../utils/checkOS.svelte";
+  import { onMount } from "svelte";
+  import { getEditorPreviewDOM } from "../utils/getEditorPreviewDom.svelte";
 
   const isLandScape: boolean = window.innerWidth > window.innerHeight;
   const cardWidth: string = isLandScape ? "20vw" : "80vw";
@@ -26,8 +28,7 @@
   });
 
   let titleValue: string = "無題のノート";
-
-  window.addEventListener("DOMContentLoaded", async () => {
+  onMount(async () => {
     console.log("--- DOM contents are loaded ---");
     const dbRoot: dbRoot = await getDbRoot();
     if (!dbRoot.current) return;
@@ -37,6 +38,8 @@
     const currentNoteBody: string = dbRoot.current.data()[currentNote].body;
     insertBody(currentNoteBody);
     alertForFirefox();
+    ParsingMD.getNoteDom();
+    getEditorPreviewDOM.initialize();
   });
 
   const alertForFirefox = (): void => {

@@ -5,6 +5,7 @@
   import AuthButton from "../components/AuthButton.svelte";
   import HeaderLogo from "../components/svgComponents/HeaderLogo.svelte";
   import SignInStories from "../components/svgComponents/SigninStories.svelte";
+  import { onMount } from "svelte";
 
   interface provider {
     Hb: any;
@@ -34,7 +35,7 @@
     firebase.auth().signInWithRedirect(providerGoogle);
   };
 
-  window.addEventListener("DOMContentLoaded", (): void => {
+  onMount(() => {
     checkFirebaseStatus();
   });
 </script>

@@ -59,7 +59,7 @@ export default {
     json(),
     resolve({
       browser: true,
-      dedupe: ['svelte']
+      dedupe: ['mjs', 'svelte']
     }),
     commonjs(),
     svelteSVG(),

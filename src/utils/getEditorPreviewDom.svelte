@@ -31,8 +31,4 @@
       return this.noteTitleDom.value;
     }
   }
-
-  window.addEventListener("DOMContentLoaded", () => {
-    getEditorPreviewDOM.initialize();
-  });
 </script>

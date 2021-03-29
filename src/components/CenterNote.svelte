@@ -51,10 +51,6 @@
       anotherElement.style.zIndex = "2";
     }
   }
-
-  window.addEventListener("DOMContentLoaded", () => {
-    ParsingMD.getNoteDom();
-  });
 </script>
 
 <textarea class="main-note center-content syncscroll" name="sameScroll" id="main_note"></textarea>
