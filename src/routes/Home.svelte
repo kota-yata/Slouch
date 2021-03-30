@@ -30,6 +30,8 @@
   let titleValue: string = "無題のノート";
   onMount(async () => {
     console.log("--- DOM contents are loaded ---");
+    getEditorPreviewDOM.initialize();
+    ParsingMD.getNoteDom();
     const dbRoot: dbRoot = await getDbRoot();
     if (!dbRoot.current) return;
     const currentNote: any = dbRoot.current.data().current;
@@ -38,8 +40,6 @@
     const currentNoteBody: string = dbRoot.current.data()[currentNote].body;
     insertBody(currentNoteBody);
     alertForFirefox();
-    ParsingMD.getNoteDom();
-    getEditorPreviewDOM.initialize();
   });
 
   const alertForFirefox = (): void => {
